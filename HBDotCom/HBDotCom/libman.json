@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "cdnjs",
+      "library": "wow@1.1.2",
+      "destination": "wwwroot/lib/wow/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "animate.css@3.7.0",
+      "destination": "wwwroot/lib/animate.css/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "OwlCarousel2@2.3.4",
+      "destination": "wwwroot/lib/OwlCarousel2/"
+    }
+  ]
+}
