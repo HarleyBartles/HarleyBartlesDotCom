@@ -18,14 +18,38 @@
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        @* TODO: Change these to use CDNs in production *@
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="~/lib/animate.css/animate.min.css" />
-        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.carousel.css" />
-        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.theme.default.css" />
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute" />
 
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              asp-fallback-href="~/lib/font-awesome/css/font-awesome.min.css"
+              asp-fallback-test-class="fa"
+              asp-fallback-test-property="font-family"
+              asp-fallback-test-value="FontAwesome"
+              integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+              crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+              asp-fallback-href="~/lib/animate.css/animate.min.css"
+              asp-fallback-test-class="animated"
+              asp-fallback-test-property="animation-fill-mode"
+              asp-fallback-test-value="both"
+              integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
+              crossorigin="anonymous" />
+
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+              asp-fallback-href="OwlCarousel2/assets/owl.carousel.min.css"
+              asp-fallback-test-class="owl-carousel"
+              asp-fallback-test-property="width"
+              asp-fallback-test-value="100%"
+              integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw="
+              crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
+
+        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.theme.default.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
 </head>
@@ -87,7 +111,6 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.wow"
                 crossorigin="anonymous"
                 integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U="></script>
-        <div id="HELOOO"></div>
         @* TODO: Change these to use CDNs in production *@
         <script src="~/lib/OwlCarousel2/owl.carousel.js"></script>
 
