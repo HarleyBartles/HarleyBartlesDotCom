@@ -82,8 +82,13 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+                asp-fallback-src="~/lib/wow/wow.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.wow"
+                crossorigin="anonymous"
+                integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U="></script>
+
         @* TODO: Change these to use CDNs in production *@
-        <script src="~/lib/wow/wow.js"></script>
         <script src="~/lib/OwlCarousel2/owl.carousel.js"></script>
 
         <script src="~/js/site.js" asp-append-version="true"></script>
