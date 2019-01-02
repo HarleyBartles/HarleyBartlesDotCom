@@ -16,4 +16,4 @@ services:
     environment:
       DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'staging'
-      FORCE_RENEW: 'true'
+      #FORCE_RENEW: 'true'
