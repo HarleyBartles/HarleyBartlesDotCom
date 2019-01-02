@@ -40,6 +40,7 @@ namespace HBDotCom
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddHttpsRedirection(options => options.HttpsPort = 443);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
