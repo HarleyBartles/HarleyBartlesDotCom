@@ -1,0 +1,189 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body
+{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+p, span, div, a { font-family:'Lato', 'Open Sans', sans-serif}
+h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
+
+.site-logo
+{
+    height: 200%;
+    width: auto;
+    margin-top: -5px;
+}
+
+.owl-item
+{
+    position: relative;
+}
+
+.carousel-image
+{
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    font: 0/0 serif;
+    text-shadow: none;
+    color: transparent;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+    .carousel-image .sizer
+    {
+        display: block;
+        height: 0;
+        padding-top: 45.83%;
+        max-height: calc(100vh - 30px);
+    }
+
+    .sizer.full-height{
+        padding-top: 100%;
+    }
+    .sizer.header{
+    }
+    .owl-item .owl-overlay
+    {
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+        .item2 .owl-overlay
+        {
+            bottom: 10%;
+            left: 10%;
+            top:unset;
+            right:unset;
+            color: white;
+        }
+
+.nav-container
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(100,100,100,0.7);
+}
+
+    .nav-container li
+    {
+        float: left;
+    }
+
+@media only screen and (max-width:768px)
+{
+    .nav-container li a
+    {
+        color: #fff;
+        font-size: 0.8em;
+    }
+
+        .nav-container li a:hover
+        {
+            color: #f0f0f0;
+        }
+}
+
+@media only screen and ( min-width:769px )
+{
+    .nav-container
+    {
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-37%);
+        top: 50%;
+        background: transparent;
+        width: 20%;
+    }
+
+        .nav-container li
+        {
+            float: none;
+        }
+}
+
+        
+
+a .fa { color:#fff; }
+
+    a .fa:hover { color:#f0f0f0; }
+
+
+.animated.delay-0_1s { animation-delay: 0.1s; }
+.animated.delay-0_25s { animation-delay: 0.25s; }
+.animated.delay-0_5s { animation-delay: 0.5s; }
+.animated.delay-0_75s { animation-delay: 0.75s; }
+.animated.delay-1_25s { animation-delay: 1.25s; }
+.animated.delay-1_5s { animation-delay: 1.5s; }
+.animated.delay-1_75s { animation-delay: 1.75s; }
+
+
+
+.progress-bar.w-10 { width: 10%; }
+.progress-bar.w-20 { width: 20%; }
+.progress-bar.w-25 { width: 25%; }
+.progress-bar.w-30 { width: 30%; }
+.progress-bar.w-40 { width: 40%; }
+.progress-bar.w-50 { width: 50%; }
+.progress-bar.w-60 { width: 60%; }
+.progress-bar.w-70 { width: 70%; }
+.progress-bar.w-75 { width: 75%; }
+.progress-bar.w-80 { width: 80%; }
+.progress-bar.w-90 { width: 90%; }
+.progress-bar.w-100 { width: 100%; }
+
+@-webkit-keyframes growBars {
+    from { width: 0; }
+}
+
+@keyframes growBars {
+  from { width: 0; }
+}
+
+.growBars {
+  -webkit-animation-name: growBars;
+  animation-name: growBars;
+}
+
+
+
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
