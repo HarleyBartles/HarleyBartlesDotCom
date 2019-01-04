@@ -31,7 +31,7 @@ namespace HBDotCom.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Reach out and touch me.";
 
             return View();
         }

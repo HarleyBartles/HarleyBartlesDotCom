@@ -21,7 +21,7 @@
             {
                 items: 1,
                 navigation: true, // Show next and prev buttons
-                autoplay: true,
+                autoplay: false,
                 loop: true,
                 slideSpeed: 300,
                 paginationSpeed: 1000,
