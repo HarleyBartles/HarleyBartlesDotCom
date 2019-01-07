@@ -31,7 +31,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: HBDotCom
+      MYSQL_DATABASE: mysql
       MYSQL_ROOT_PASSWORD: Davidson6514
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
