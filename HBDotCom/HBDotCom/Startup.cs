@@ -17,9 +17,11 @@ namespace HBDotCom
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment Env { get; set; }
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -37,6 +39,7 @@ namespace HBDotCom
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
