@@ -41,7 +41,6 @@ namespace HBDotCom
                 //    Configuration.GetConnectionString("DefaultConnection")));
                 options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 

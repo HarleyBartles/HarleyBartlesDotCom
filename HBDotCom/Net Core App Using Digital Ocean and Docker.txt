@@ -1,0 +1,50 @@
+Create a project with Docker
+Update dockerfile and create docker-compose.yml
+Create a droplet
+Setup new user:	https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+Add new user to Sudo and Docker groups
+login as new user
+clone Git Repo into new droplet: git clone https://github.com/HarleyBartles/HBDotCom
+cd all the way to the application root.
+    cd HarleyBartlesDotCom
+    cd HBDotCom
+    cd HBDotCom
+sudo service docker start
+docker-compose build
+docker-compose up
+Ctrl+C to exit
+docker-compose up -d
+
+
+SQL:
+Nope
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=D4v1ds0n6514' -p 1433:1433 --name sqlserver -d microsoft/mssql-server-linux
+Mebbe
+	wget https://repo.percona.com/apt/percona-release_0.1-6.$(lsb_release -sc)_all.deb
+	sudo dpkg -i percona-release_0.1-6.$(lsb_release -sc)_all.deb
+	sudo apt-get update
+	sudo apt-get install percona-server-server-5.7
+	Start
+	sudo service mysql start
+	Check
+	service mysql status
+	Stop
+	sudo service mysql stop
+	Restart
+	sudo service mysql restart
+
+login to SQL
+	mysql -u root -p
+	SHOW DATABASES;
+
+Point DNS
+SSL (Certbot)
+
+
+
+docker container ls
+docker stop $(docker ps -aq)
+git pull origin master
+docker-compose build
+docker-compose up -d
+docker run -p 80:80 harleybartles/hbdotcom
