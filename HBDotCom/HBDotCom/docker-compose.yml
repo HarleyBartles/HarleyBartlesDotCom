@@ -5,6 +5,8 @@ services:
     build:
       context:  ./
       dockerfile: Dockerfile
+    networks:
+      - app-network
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -17,3 +19,26 @@ services:
       DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'production'
       #FORCE_RENEW: 'true'
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: HBDotCom
+      MYSQL_ROOT_PASSWORD: Davidson6514
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

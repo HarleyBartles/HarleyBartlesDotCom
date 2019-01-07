@@ -16,6 +16,7 @@ COPY --from=build-env /app/out .
 
 ENV ASPNETCORE_URLS http://+:5000
 EXPOSE 5000
+#EXPOSE 3306
 
 # Change name of dll for your application 
 ENTRYPOINT ["dotnet", "HBDotCom.dll"]

@@ -11,7 +11,7 @@ namespace HBDotCom.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            this.Database.EnsureCreated();
+            this.Database.Migrate();
         }
     }
 }
