@@ -36,6 +36,7 @@ namespace HBDotCom
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 //options.UseSqlServer(
                 //    Configuration.GetConnectionString("DefaultConnection")));
