@@ -40,8 +40,12 @@ namespace HBDotCom
             services.AddDbContext<ApplicationDbContext>(options =>
                 //options.UseSqlServer(
                 //    Configuration.GetConnectionString("DefaultConnection")));
-                options.UseMySql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                //options.UseMySql(
+                //    Configuration.GetConnectionString("DefaultConnection")));
+
+                options.UseMySql(@"Server=db; Database=MySQL; Uid=root; Pwd=D4v1ds0n6514"));
+
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
