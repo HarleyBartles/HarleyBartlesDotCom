@@ -2,15 +2,18 @@ Create a project with Docker
 Update dockerfile and create docker-compose.yml
 Create a droplet
 Setup new user:	https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+	adduser harley
 Add new user to Sudo and Docker groups
+	usermod -aG sudo harley
+	usermod -aG docker harley
+	rsync --archive --chown=harley:harley ~/.ssh /home/harley
 login as new user
-clone Git Repo into new droplet: git clone https://github.com/HarleyBartles/HBDotCom
+clone Git Repo into new droplet: git clone https://github.com/HarleyBartles/HarleyBartlesDotCom
 cd all the way to the application root.
-    cd HarleyBartlesDotCom
-    cd HBDotCom
-    cd HBDotCom
+    cd HarleyBartlesDotCom/HBDotCom/HBDotCom
 sudo service docker start
 docker-compose build
+point domain before you up the HTTPS portal
 docker-compose up
 Ctrl+C to exit
 docker-compose up -d
@@ -37,6 +40,10 @@ login to SQL
 	mysql -u root -p
 	GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY 'D4v1ds0n6514';
 	SHOW DATABASES;
+
+Mebbe
+	docker run --name HB-mysql -e MYSQL_ROOT_PASSWORD=D4v1ds0n6514 -d mysql:8
+
 
 cd C:\Program Files\MySQL\mysql-8.0.13-winx64\bin
 mysqld --install
