@@ -7,6 +7,11 @@ services:
       dockerfile: Dockerfile
     networks:
       - app-network
+  mysql:
+    image: /docker-library/mysql:8
+    ports: '3306:3306'
+    links: app
+    networks: app-network
   https-portal:
     image: steveltn/https-portal:1
     ports:
