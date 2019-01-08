@@ -6,7 +6,7 @@ services:
       context:  ./
       dockerfile: Dockerfile
     links:
-      - percona
+      - db
     networks:
       - app-network
   db:
@@ -14,7 +14,6 @@ services:
     #container_name: perconaserver
     environment:
       MYSQL_ROOT_PASSWORD: D4v1ds0n6514
-      MYSQL_ROOT_HOST: 178.62.105.222
     ports:
       - "3306"
     volumes:
