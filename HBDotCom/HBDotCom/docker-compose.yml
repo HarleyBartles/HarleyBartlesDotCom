@@ -11,7 +11,7 @@ services:
       - app-network
   percona:
     image: percona/percona-server:latest
-    name: perconaserver
+    container_name: perconaserver
     environment:
       MYSQL_ROOT_PASSWORD: D4v1ds0n6514
     ports:
