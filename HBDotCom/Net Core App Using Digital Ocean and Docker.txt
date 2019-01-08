@@ -35,7 +35,19 @@ Mebbe
 
 login to SQL
 	mysql -u root -p
+	GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY 'D4v1ds0n6514';
 	SHOW DATABASES;
+
+cd C:\Program Files\MySQL\mysql-8.0.13-winx64\bin
+mysqld --install
+mysqld --initialize --console
+[Server] A temporary password is generated for root@localhost: MWq;pI!63+h7
+net start mysql
+
+
+mysqld --init-file=C:\ProgramData\MySql\mysql-5.7.24-winx64\tmp\mysql-init.txt --console 
+
+
 
 Point DNS
 SSL (Certbot)
