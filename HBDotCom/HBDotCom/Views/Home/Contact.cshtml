@@ -2,112 +2,75 @@
     ViewData["Title"] = "Contact";
 }
 
-<div class="container">
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["Message"]</h3>
 
-    <div class="row">
-        <div class="col-sm-3">
-            <img class="people" src="~/images/ME.png" width="100%" />
-        </div>
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
 
-        <div class="col-sm-9">
+<div class="row">
+    <div class="col-sm-3">
+        <img class="people" src="~/images/ME.png" width="100%" />
+    </div>
 
-            <div class="card text-center text-md-left">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#Email" data-toggle="tab" aria-expanded="true" aria-controls="Email">
-                                <i class="fa fa-2x fa-envelope-square wow animated fadeInUp delay-0_25s"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Telephone" data-toggle="tab" aria-expanded="false" aria-controls="Telephone">
-                                <i class="fa fa-2x fa-phone-square wow animated fadeInUp delay-0_5s"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Twitter" data-toggle="tab" aria-expanded="false" aria-controls="Twitter">
-                                <i class="fa fa-2x fa-twitter-square wow animated fadeInUp delay-0_75s"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#LinkedIn" data-toggle="tab" aria-expanded="false" aria-controls="LinkedIn">
-                                <i class="fa fa-2x fa-linkedin-square wow animated fadeInUp delay-1s"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#FaceBook" data-toggle="tab" aria-expanded="false" aria-controls="FaceBook">
-                                <i class="fa fa-2x fa-facebook-square wow animated fadeInUp delay-1_25s"></i>
-                            </a>
-                        </li>
+    <div class="col-sm-9">
 
-                    </ul>
+        <div class="card text-center text-md-left">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Email" data-toggle="tab" aria-expanded="true" aria-controls="Email">
+                            <i class="fa fa-2x fa-envelope-square wow animated fadeInUp delay-0_25s"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Telephone" data-toggle="tab" aria-expanded="false" aria-controls="Telephone">
+                            <i class="fa fa-2x fa-phone-square wow animated fadeInUp delay-0_5s"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Twitter" data-toggle="tab" aria-expanded="false" aria-controls="Twitter">
+                            <i class="fa fa-2x fa-twitter-square wow animated fadeInUp delay-0_75s"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#LinkedIn" data-toggle="tab" aria-expanded="false" aria-controls="LinkedIn">
+                            <i class="fa fa-2x fa-linkedin-square wow animated fadeInUp delay-1s"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#FaceBook" data-toggle="tab" aria-expanded="false" aria-controls="FaceBook">
+                            <i class="fa fa-2x fa-facebook-square wow animated fadeInUp delay-1_25s"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="card-body tab-content">
+                <div class="tab-pane fade show active wow animated fadeIn delay-1_5s" id="Email">
+                    <h5 class="card-title">Email</h5>
+                    <p class="card-text">Email me at <a href="mailto:hbartles81@gmail.com">HBartles81@gmail.com</a> or hit the button below/</p>
+                    <a href="mailto:hbartles81@gmail.com" class="btn btn-primary">Email Me&nbsp;&nbsp;<i class="fa fa-envelope"></i></a>
                 </div>
-                <div class="card-body tab-content">
-                    <div class="tab-pane fade show active wow animated fadeIn delay-1_5s" id="Email">
-                        <h5 class="card-title">Email</h5>
-                        <p class="card-text">Email me at <a href="mailto:hbartles81@gmail.com">HBartles81@gmail.com</a> or hit the button below/</p>
-                        <a href="mailto:hbartles81@gmail.com" class="btn btn-primary">Email Me&nbsp;&nbsp;<i class="fa fa-envelope"></i></a>
-                    </div>
-                    <div class="tab-pane fade" id="Telephone">
-                        <h5 class="card-title">Phone</h5>
-                        <p class="card-text">Get me on the phone at 07566 845 952 or hit the button below.</p>
-                        <a href="tel:07566845952" class="btn btn-primary">Call Me&nbsp;&nbsp;<i class="fa fa-phone"></i></a>
-                    </div>
-                    <div class="tab-pane fade" id="Twitter">
-                        <h5 class="card-title">Twitter</h5>
-                        <p class="card-text">I spend a bit of time on Twitter, mostly coming up with fun parenting jokes. Hit the button below to check out my Twitter page.</p>
-                        <a target="_blank" href="https://www.twitter.com/harleybartles" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-twitter"></i></a>
-                    </div>
-                    <div class="tab-pane fade" id="LinkedIn">
-                        <h5 class="card-title">LinkedIn</h5>
-                        <p class="card-text">If you're a potential employer, you'll probably want to check out my employment history on Linkedin. Hit the link below to go directly there.</p>
-                        <a target="_blank" href="https://www.linkedin.com/in/harley-bartles-92326110/" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-linkedin"></i></a>
-                    </div>
-                    <div class="tab-pane fade" id="FaceBook">
-                        <h5 class="card-title">Facebook</h5>
-                        <p class="card-text">I don't spend a whole lot of time on Facebook, in fact I'm hardly ever there. Feel free to check out my public profile by hitting the button below.</p>
-                        <a target="_blank" href="https://www.facebook.com/harley.bartles" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-facebook"></i></a>
-                    </div>
+                <div class="tab-pane fade" id="Telephone">
+                    <h5 class="card-title">Phone</h5>
+                    <p class="card-text">Get me on the phone at 07566 845 952 or hit the button below.</p>
+                    <a href="tel:07566845952" class="btn btn-primary">Call Me&nbsp;&nbsp;<i class="fa fa-phone"></i></a>
+                </div>
+                <div class="tab-pane fade" id="Twitter">
+                    <h5 class="card-title">Twitter</h5>
+                    <p class="card-text">I spend a bit of time on Twitter, mostly coming up with fun parenting jokes. Hit the button below to check out my Twitter page.</p>
+                    <a target="_blank" href="https://www.twitter.com/harleybartles" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-twitter"></i></a>
+                </div>
+                <div class="tab-pane fade" id="LinkedIn">
+                    <h5 class="card-title">LinkedIn</h5>
+                    <p class="card-text">If you're a potential employer, you'll probably want to check out my employment history on Linkedin. Hit the link below to go directly there.</p>
+                    <a target="_blank" href="https://www.linkedin.com/in/harley-bartles-92326110/" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-linkedin"></i></a>
+                </div>
+                <div class="tab-pane fade" id="FaceBook">
+                    <h5 class="card-title">Facebook</h5>
+                    <p class="card-text">I don't spend a whole lot of time on Facebook, in fact I'm hardly ever there. Feel free to check out my public profile by hitting the button below.</p>
+                    <a target="_blank" href="https://www.facebook.com/harley.bartles" class="btn btn-primary">See my&nbsp;&nbsp;<i class="fa fa-facebook"></i></a>
                 </div>
             </div>
-
-            @*<ul class="list-inline">
-            <li class="list-inline-item wow animated fadeInUp delay-0_75s">
-                <a href="#Twitter" data-toggle="collapse" aria-expanded="false" aria-controls="Twitter">
-                    <i class="fa fa-2x fa-twitter-square"></i>
-                </a>
-            </li>
-            <li class="list-inline-item wow animated fadeInUp delay-0_75s">
-                <a href="#LinkedIn" data-toggle="collapse" aria-expanded="false" aria-controls="LinkedIn">
-                    <i class="fa fa-2x fa-linkedin-square"></i>
-                </a>
-            </li>
-
-            <li class="list-inline-item wow animated fadeInUp delay-1_25s"><a target="_blank" href="https://www.facebook.com/harley.bartles"><i class="fa fa-2x fa-facebook-square"></i></a></li>
-            <li class="list-inline-item wow animated fadeInUp delay-1_5s"><a target="_blank" href="mailto:hbartles81@gmail.com"><i class="fa fa-2x fa-envelope-square"></i></a></li>
-            <li class="list-inline-item wow animated fadeInUp delay-1_75s"><a target="_blank" href="tel:07566845952"><i class="fa fa-2x fa-phone-square"></i></a></li>
-        </ul>
-        <style>
-            #info
-            {
-                width: 100%;
-            }
-        </style>
-        <div id="info" class="accordion">
-            <div id="Twitter" class="collapse">
-                <div class="panel panel-body">
-                    Hellooooo! Twitter
-                </div>
-            </div>
-            <div id="LinkedIn" class="collapse">
-                <div class="panel panel-body panel">
-                    Hellooooo! Linkedin
-                </div>
-            </div>
-        </div>*@
-
         </div>
     </div>
 </div>

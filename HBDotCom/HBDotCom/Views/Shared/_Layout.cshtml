@@ -10,13 +10,11 @@
         <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap-reboot.css" />
         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="~/lib/animate.css/animate.css" />
-        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.carousel.css" />
-        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.theme.default.css" />
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only"
               asp-fallback-test-property="position"
@@ -40,41 +38,32 @@
               asp-fallback-test-value="both"
               integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
               crossorigin="anonymous" />
-
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-              asp-fallback-href="OwlCarousel2/assets/owl.carousel.min.css"
-              asp-fallback-test-class="owl-carousel"
-              asp-fallback-test-property="width"
-              asp-fallback-test-value="100%"
-              integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw="
-              crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
-
-        <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.theme.default.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                @*Harley Bartles*@
-                <img class="site-logo bg-light" alt="Harley Bartles" src="~/images/Logo.png" />
-            </a>
-            <button class="navbar-toggler" 
-                    type="button" 
+            <div class="site-logo d-inline-block align-self-md-baseline">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    @*Harley Bartles*@
+                    <img class="site-logo bg-light" alt="Harley Bartles" src="~/images/Logo.png" />
+                </a>
+            </div>
+            <button class="navbar-toggler"
+                    type="button"
                     data-toggle="collapse"
                     data-target="#navbarCollapse"
                     aria-controls="navbarCollapse"
-                    aria-expanded="false" 
+                    aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto mr-md-5 ml-md-auto mx-lg-auto">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
@@ -86,7 +75,12 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="body-content">
+    @if (ViewBag.Title != "Home Page")
+    {
+        <div class="content-spacer d-none d-md-block"></div>
+    }
+
+    <div class="@("body-content " + (ViewBag.Title == "Home Page" ? "container-fluid px-0" : "container"))">
         @RenderBody()
         <hr />
         <footer class="container">
@@ -131,7 +125,6 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.js"></script>
         <script src="~/lib/wow/wow.js"></script>
-        <script src="~/lib/OwlCarousel2/owl.carousel.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
@@ -151,9 +144,6 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.wow"
                 crossorigin="anonymous"
                 integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U="></script>
-        @* TODO: Change these to use CDNs in production *@
-        <script src="~/lib/OwlCarousel2/owl.carousel.js"></script>
-
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 

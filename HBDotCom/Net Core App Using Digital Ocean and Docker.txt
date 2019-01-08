@@ -13,8 +13,15 @@ cd all the way to the application root.
     cd HarleyBartlesDotCom/HBDotCom/HBDotCom
 sudo service docker start
 docker-compose build
-point domain before you up the HTTPS portal
+point domain before you up the app for https reasons
 docker-compose up
+No DB connection?
+	Open a new connection while the sql container is up
+	docker exec -it perconaserver bash // To get into the running container.
+	mysql -u root -p
+	SET GLOBAL innodb_fast_shutdown = 1;
+	exit
+	mysql_upgrade -u root -p
 Ctrl+C to exit
 docker-compose up -d
 
@@ -37,6 +44,7 @@ Mebbe
 	sudo service mysql restart
 
 login to SQL
+	docker exec -it mysql bash
 	mysql -u root -p
 	GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY 'D4v1ds0n6514';
 	SHOW DATABASES;

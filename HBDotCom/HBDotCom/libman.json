@@ -14,11 +14,6 @@
     },
     {
       "provider": "cdnjs",
-      "library": "OwlCarousel2@2.3.4",
-      "destination": "wwwroot/lib/OwlCarousel2/"
-    },
-    {
-      "provider": "cdnjs",
       "library": "font-awesome@4.7.0",
       "destination": "wwwroot/lib/font-awesome/"
     },

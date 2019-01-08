@@ -13,11 +13,11 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 
 
 
-.site-logo {
-    max-width: 130px;
+.site-logo { z-index: 1;}
+.content-spacer
+{
+    height:40px;
 }
-
-
 
 /* Carousel */
 
@@ -49,18 +49,21 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 /* Small devices (landscape phones, 576px and up) */ 
 @media (min-width: 576px)
 {
-    .site-logo
-    {
-        position: absolute;
-        top: 0;
-        max-width: 250px;
-        z-index: 1;
-    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px)
 {
+    .navbar .container
+    {
+        max-height: 3rem;
+    }
+
+    .site-logo img
+    {
+        height: 5rem;
+    }
+
     .carousel-item:nth-child(1) .carousel-caption h3
     {
         margin-bottom: 25%;
@@ -98,6 +101,44 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
     }
 }
 
+
+/* Max width breaks */
+/* XS */
+@media (max-width:575.9px){
+
+}
+
+/* SM */
+@media (max-width:767.9px)
+{
+    .site-logo
+    {
+        max-width: 75%;
+    }
+
+        .site-logo img
+        {
+            width: 100%;
+        }
+
+        .site-logo + button
+        {
+            max-width: 25%;
+        }
+}
+
+/* MD */
+@media (max-width:991.9px){
+
+}
+
+/* LG */
+@media (max-width:1199.9px)
+{
+}
+
+/* XL */
+/* No Upper Bound */
         
 /* Global (No Breaks) */
 
