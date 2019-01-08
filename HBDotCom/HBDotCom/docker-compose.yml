@@ -6,7 +6,7 @@ services:
       context:  ./
       dockerfile: Dockerfile
     links:
-      - perconaserver
+      - percona
     networks:
       - app-network
   percona:
