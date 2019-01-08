@@ -5,16 +5,25 @@ services:
     build:
       context:  ./
       dockerfile: Dockerfile
+    links:
+      - percona
     networks:
       - app-network
-  mysql:
-    image: /docker-library/mysql:8
-    ports: 
-      - '3306:3306'
+  percona:
+    image: percona/percona-server:latest
+    name: perconaserver
     environment:
       MYSQL_ROOT_PASSWORD: D4v1ds0n6514
-    links:
-      - app
+    ports:
+      - "3306"
+    volumes:
+      # create volumes for use
+      - /var/lib/mysql
+      # bind mount my local my.cnf
+      # - $PWD/my.cnf:/etc/my.cnf
+    command:
+      # Workaround for no my.cnf in image
+        - '--user=mysql'
     networks:
       - app-network
   https-portal:
