@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HBDotCom.Data;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HBDotCom.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySql.Data.MySqlClient;
+using System;
+using System.Threading;
 
 namespace HBDotCom
 {
     public class Startup
     {
         private IHostingEnvironment Env { get; set; }
+        private readonly string _connectionString;
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
+            
             Configuration = configuration;
+            _connectionString = $@"Server={configuration["MYSQL_SERVER_NAME"]}; 
+                                    Database={configuration["MYSQL_DATABASE"]}; 
+                                    Uid={configuration["MYSQL_USER"]}; 
+                                    Pwd={configuration["MYSQL_PASSWORD"]}";
             Env = env;
         }
 
@@ -36,14 +40,14 @@ namespace HBDotCom
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            WaitForDBInit(Configuration.GetConnectionString("DefaultConnection"));
             services.AddDbContext<ApplicationDbContext>(options =>
                 //options.UseSqlServer(
                 //    Configuration.GetConnectionString("DefaultConnection")));
-                //options.UseMySql(
-                //    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
-                options.UseMySql(@"Server=db; Database=MySQL; Uid=root; Pwd=D4v1ds0n6514"));
+                //options.UseMySql(@"Server=db; Database=MySQL; Uid=root; Pwd=D4v1ds0n6514"));
 
 
             services.AddDefaultIdentity<IdentityUser>()
@@ -82,6 +86,28 @@ namespace HBDotCom
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        // Try to connect to the db with exponential backoff on fail.
+        private static void WaitForDBInit(string connectionString)
+        {
+            var connection = new MySqlConnection(connectionString);
+            int retries = 1;
+            while (retries < 7)
+            {
+                try
+                {
+                    Console.WriteLine("Connecting to db. Trial: {0}", retries);
+                    connection.Open();
+                    connection.Close();
+                    break;
+                }
+                catch (MySqlException)
+                {
+                    Thread.Sleep((int)Math.Pow(2, retries) * 1000);
+                    retries++;
+                }
+            }
         }
     }
 }

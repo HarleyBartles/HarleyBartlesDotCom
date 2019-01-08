@@ -5,22 +5,29 @@ services:
     build:
       context:  ./
       dockerfile: Dockerfile
+    volumes:
+      - appbuild:/app
     links:
       - db
+    environment:
+      MYSQL_SERVER_NAME: perconaserver
+    env_file:
+      - secrets.env
     networks:
       - app-network
   db:
     image: percona/percona-server:latest
-    #container_name: perconaserver
+    container_name: perconaserver
+    restart: always
+    volumes:
+      # create volumes for use
+      - dbvol:/var/lib/mysql
+      # bind mount my local my.cnf
+      # - $PWD/my.cnf:/etc/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: D4v1ds0n6514
     ports:
       - "3306"
-    volumes:
-      # create volumes for use
-      - /var/lib/mysql
-      # bind mount my local my.cnf
-      # - $PWD/my.cnf:/etc/my.cnf
     command:
       # Workaround for no my.cnf in image
         - '--user=mysql'
@@ -45,3 +52,7 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  appbuild:
+  dbvol:
