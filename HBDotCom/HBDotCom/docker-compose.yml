@@ -11,7 +11,8 @@ services:
     image: /docker-library/mysql:8
     ports: 
       - '3306:3306'
-    MYSQL_ROOT_PASSWORD: D4v1ds0n6514
+    environment:
+      MYSQL_ROOT_PASSWORD: D4v1ds0n6514
     links:
       - app
     networks:
