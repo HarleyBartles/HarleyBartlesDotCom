@@ -13,7 +13,11 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 
 
 
-.site-logo { z-index: 1;}
+.site-logo
+{
+    z-index: 1;
+    border-radius: 1rem;
+}
 .content-spacer
 {
     height:40px;
