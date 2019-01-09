@@ -20,7 +20,7 @@ namespace HBDotCom
 
         public IConfiguration Configuration { get; }
 
-        public Startup(/*IConfiguration configuration,*/ IHostingEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
