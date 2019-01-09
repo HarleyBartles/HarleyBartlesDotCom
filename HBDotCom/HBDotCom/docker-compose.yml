@@ -1,7 +1,7 @@
 ﻿version: '3.1'
 
 env_file:
-  - secrets.env
+  /secrets.env
 
 services:
   app:
