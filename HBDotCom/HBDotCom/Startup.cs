@@ -119,6 +119,7 @@ namespace HBDotCom
         // Try to connect to the db with exponential backoff on fail.
         private static void WaitForDBInit(string connectionString)
         {
+            Console.WriteLine(connectionString);
             var connection = new MySqlConnection(connectionString);
             int retries = 1;
             while (retries < 7)
