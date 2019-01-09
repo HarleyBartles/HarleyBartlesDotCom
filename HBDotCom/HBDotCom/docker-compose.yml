@@ -1,8 +1,5 @@
 ﻿version: '3.1'
 
-env_file:
-  /secrets.env
-
 services:
   app:
     build:
@@ -56,4 +53,6 @@ volumes:
   dbvol:
 
 secrets:
+  env_file:
+  - secrets.env
   MYSQL_PASSWORD:env_file.MYSQL_PASSWORD
