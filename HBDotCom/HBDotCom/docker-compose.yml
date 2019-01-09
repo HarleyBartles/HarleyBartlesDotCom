@@ -1,5 +1,21 @@
 ﻿version: '3.1'
- 
+
+ #Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  appbuild:
+  dbvol:
+
+secrets:
+  MYSQL_DATABASE:
+    external: true
+  MYSQL_USER:
+    external: true
+  MYSQL_PASSWORD:
+    external: true
 services:
   app:
     build:
@@ -51,19 +67,3 @@ services:
     networks:
       - app-network
 
-#Docker Networks
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  appbuild:
-  dbvol:
-
-secrets:
-  MYSQL_DATABASE:
-    external: true
-  MYSQL_USER:
-    external: true
-  MYSQL_PASSWORD:
-    external: true
