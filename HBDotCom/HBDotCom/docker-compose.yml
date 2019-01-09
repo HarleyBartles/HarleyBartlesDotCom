@@ -16,8 +16,6 @@ services:
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
-    networks:
-      - app-network
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -34,10 +32,6 @@ services:
     command:
       # Workaround for no my.cnf in image
         - '--user=mysql'
-    networks:
-      - app-network
-    depends_on:
-      - "app-network"
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -50,8 +44,6 @@ services:
       DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'production'
       #FORCE_RENEW: 'true'
-    networks:
-      - app-network
 
 #Docker Networks
 networks:
