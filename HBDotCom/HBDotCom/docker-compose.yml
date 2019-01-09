@@ -13,6 +13,7 @@ services:
       MYSQL_SERVER_NAME: perconaserver
     env_file:
     - secrets.env
+    networks: app-network
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -31,6 +32,7 @@ services:
     command:
       # Workaround for no my.cnf in image
         - '--user=mysql'
+    networks: app-network
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -43,6 +45,7 @@ services:
       DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'production'
       #FORCE_RENEW: 'true'
+      networks: app-network
 
 #Docker Networks
 networks:
@@ -54,9 +57,4 @@ volumes:
   dbvol:
 
 secrets:
-  MYSQL_DATABASE:
-    external: true
-  MYSQL_USER:
-    external: true
-  MYSQL_PASSWORD:
-    external: true
+  MYSQL_PASSWORD:secrets.env.MYSQL_PASSWORD
