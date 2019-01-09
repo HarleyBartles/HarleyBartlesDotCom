@@ -11,15 +11,11 @@ services:
       - db
     environment:
       MYSQL_SERVER_NAME: perconaserver
+
     secrets:
-      MYSQL_DATABASE:
-        external: true
-      MYSQL_USER=:
-        external: true
-      MYSQL_PASSWORD=:
-        external: true
-    env_file:
-      - secrets.env
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     networks:
       - app-network
   db:
@@ -31,10 +27,8 @@ services:
       - dbvol:/var/lib/mysql
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
-    env_file:
-      - secrets.env
-    #environment:
-      #MYSQL_ROOT_PASSWORD: D4v1ds0n6514
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
     ports:
       - "3306"
     command:
@@ -65,3 +59,11 @@ networks:
 volumes:
   appbuild:
   dbvol:
+
+secrets:
+  MYSQL_DATABASE:
+    external: true
+  MYSQL_USER=:
+    external: true
+  MYSQL_PASSWORD=:
+    external: true
