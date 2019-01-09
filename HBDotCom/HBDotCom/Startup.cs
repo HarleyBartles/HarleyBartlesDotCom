@@ -33,10 +33,7 @@ namespace HBDotCom
 
             if (env.IsProduction())
             {
-                _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]}; 
-                                    Database={Configuration["MYSQL_DATABASE"]}; 
-                                    Uid={Configuration["MYSQL_USER"]}; 
-                                    Pwd={Configuration["MYSQL_PASSWORD"]}";
+                _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
             } else
             {
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
