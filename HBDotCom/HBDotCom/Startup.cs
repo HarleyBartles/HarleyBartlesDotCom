@@ -15,7 +15,7 @@ namespace HBDotCom
 {
     public class Startup
     {
-        private IHostingEnvironment Env { get; set; }
+        private IHostingEnvironment _env { get; set; }
         private readonly string _connectionString;
 
         public IConfiguration Configuration { get; }
@@ -31,7 +31,7 @@ namespace HBDotCom
             //Configuration = configuration;
 
 
-            if (Env.IsProduction())
+            if (env.IsProduction())
             {
                 _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]}; 
                                     Database={Configuration["MYSQL_DATABASE"]}; 
@@ -42,7 +42,7 @@ namespace HBDotCom
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
             }
             
-            Env = env;
+            _env = env;
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
