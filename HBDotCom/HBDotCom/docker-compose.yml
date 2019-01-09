@@ -29,6 +29,8 @@ services:
       # Workaround for no my.cnf in image
         - '--user=mysql'
     networks: app-network
+    secrets:
+      - MYSQL_PASSWORD
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -54,5 +56,5 @@ volumes:
 
 secrets:
   env_file:
-  - secrets.env
+    - secrets.env
   MYSQL_PASSWORD:env_file.MYSQL_PASSWORD
