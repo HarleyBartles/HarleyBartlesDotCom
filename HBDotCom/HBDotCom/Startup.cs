@@ -17,19 +17,25 @@ namespace HBDotCom
     {
         private IHostingEnvironment Env { get; set; }
         private readonly string _connectionString;
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
-        {
-            
-            Configuration = configuration;
-            _connectionString = $@"Server={configuration["MYSQL_SERVER_NAME"]}; 
-                                    Database={configuration["MYSQL_DATABASE"]}; 
-                                    Uid={configuration["MYSQL_USER"]}; 
-                                    Pwd={configuration["MYSQL_PASSWORD"]}";
-            Env = env;
-        }
 
         public IConfiguration Configuration { get; }
 
+        public Startup(/*IConfiguration configuration,*/ IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
+            //Configuration = configuration;
+            //_connectionString = $@"Server={configuration["MYSQL_SERVER_NAME"]}; 
+            //                        Database={configuration["MYSQL_DATABASE"]}; 
+            //                        Uid={configuration["MYSQL_USER"]}; 
+            //                        Pwd={configuration["MYSQL_PASSWORD"]}";
+            Env = env;
+        }
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
