@@ -57,17 +57,10 @@ namespace HBDotCom
                 options.Password.RequireLowercase = false;
             });
 
-
-
-            
             WaitForDBInit(_connectionString);
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(
-                //    Configuration.GetConnectionString("DefaultConnection")));
                 options.UseMySql(_connectionString));
-
-                //options.UseMySql(@"Server=db; Database=MySQL; Uid=root; Pwd=D4v1ds0n6514"));
-
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -85,15 +78,12 @@ namespace HBDotCom
             }
             else
             {
-                //app.UseExceptionHandler("/Home/Error");
-                //app.UseHsts();
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
             context.Database.Migrate();
 
-            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
