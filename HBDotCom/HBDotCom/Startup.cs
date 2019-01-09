@@ -26,7 +26,9 @@ namespace HBDotCom
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
             builder.AddEnvironmentVariables();
+
             Configuration = builder.Build();
+
             if (env.IsProduction())
             {
                 _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
