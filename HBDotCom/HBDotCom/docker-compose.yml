@@ -11,11 +11,8 @@ services:
       - db
     environment:
       MYSQL_SERVER_NAME: perconaserver
-
-    secrets:
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+    env_file:
+    - secrets.env
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -27,6 +24,8 @@ services:
       # - $PWD/my.cnf:/etc/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
+    env_file:
+    - secrets.env
     ports:
       - "3306"
     command:
