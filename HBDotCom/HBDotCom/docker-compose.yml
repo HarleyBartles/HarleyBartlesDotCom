@@ -63,7 +63,7 @@ volumes:
 secrets:
   MYSQL_DATABASE:
     external: true
-  MYSQL_USER=:
+  MYSQL_USER:
     external: true
-  MYSQL_PASSWORD=:
+  MYSQL_PASSWORD:
     external: true
