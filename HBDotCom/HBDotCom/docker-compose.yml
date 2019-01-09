@@ -9,7 +9,7 @@ services:
       - appbuild:/app
     links:
       - db
-	env_file: secrets.env
+    env_file: secrets.env
     environment:
       MYSQL_SERVER_NAME: perconaserver
 	  MYSQL_DATABASE: env_file.MYSQL_DATABASE
