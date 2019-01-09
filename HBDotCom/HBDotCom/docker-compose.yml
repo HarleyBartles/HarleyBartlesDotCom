@@ -12,10 +12,6 @@ services:
     env_file: secrets.env
     environment:
       MYSQL_SERVER_NAME: perconaserver
-      #MYSQL_DATABASE: env_file.MYSQL_DATABASE
-      #MYSQL_USER: env_file.MYSQL_USER
-      #MYSQL_PASSWORD: env_file.MYSQL_PASSWORD
-
   db:
     image: percona/percona-server:latest
     container_name: perconaserver

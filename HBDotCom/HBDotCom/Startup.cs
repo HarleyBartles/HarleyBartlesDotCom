@@ -15,7 +15,6 @@ namespace HBDotCom
 {
     public class Startup
     {
-        private IHostingEnvironment _env { get; set; }
         private readonly string _connectionString;
 
         public IConfiguration Configuration { get; }
@@ -28,9 +27,6 @@ namespace HBDotCom
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            //Configuration = configuration;
-
-
             if (env.IsProduction())
             {
                 _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
@@ -38,8 +34,6 @@ namespace HBDotCom
             {
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
             }
-            
-            _env = env;
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -116,7 +110,6 @@ namespace HBDotCom
         // Try to connect to the db with exponential backoff on fail.
         private static void WaitForDBInit(string connectionString)
         {
-            Console.WriteLine(connectionString);
             var connection = new MySqlConnection(connectionString);
             int retries = 1;
             while (retries < 7)
