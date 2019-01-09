@@ -1,5 +1,5 @@
-﻿version: '3'
- 
+﻿version: '3.1'
+
 services:
   app:
     build:
@@ -9,12 +9,9 @@ services:
       - appbuild:/app
     links:
       - db
+    env_file: secrets.env
     environment:
       MYSQL_SERVER_NAME: perconaserver
-    env_file:
-      - secrets.env
-    networks:
-      - app-network
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -24,15 +21,14 @@ services:
       - dbvol:/var/lib/mysql
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
+    env_file: secrets.env
     environment:
-      MYSQL_ROOT_PASSWORD: D4v1ds0n6514
+      MYSQL_ROOT_PASSWORD: env_file.MYSQL_PASSWORD
     ports:
       - "3306"
     command:
       # Workaround for no my.cnf in image
         - '--user=mysql'
-    networks:
-      - app-network
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -45,13 +41,6 @@ services:
       DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'production'
       #FORCE_RENEW: 'true'
-    networks:
-      - app-network
-
-#Docker Networks
-networks:
-  app-network:
-    driver: bridge
 
 volumes:
   appbuild:
