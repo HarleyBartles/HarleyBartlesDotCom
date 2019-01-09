@@ -29,10 +29,19 @@ namespace HBDotCom
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
             //Configuration = configuration;
-            //_connectionString = $@"Server={configuration["MYSQL_SERVER_NAME"]}; 
-            //                        Database={configuration["MYSQL_DATABASE"]}; 
-            //                        Uid={configuration["MYSQL_USER"]}; 
-            //                        Pwd={configuration["MYSQL_PASSWORD"]}";
+
+
+            if (Env.IsProduction())
+            {
+                _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]}; 
+                                    Database={Configuration["MYSQL_DATABASE"]}; 
+                                    Uid={Configuration["MYSQL_USER"]}; 
+                                    Pwd={Configuration["MYSQL_PASSWORD"]}";
+            } else
+            {
+                _connectionString = Configuration.GetConnectionString("DefaultConnection");
+            }
+            
             Env = env;
         }
         
@@ -46,12 +55,25 @@ namespace HBDotCom
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            WaitForDBInit(Configuration.GetConnectionString("DefaultConnection"));
+            // Configure Identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+            });
+
+
+
+            
+            WaitForDBInit(_connectionString);
             services.AddDbContext<ApplicationDbContext>(options =>
                 //options.UseSqlServer(
                 //    Configuration.GetConnectionString("DefaultConnection")));
-                options.UseMySql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(_connectionString));
 
                 //options.UseMySql(@"Server=db; Database=MySQL; Uid=root; Pwd=D4v1ds0n6514"));
 
