@@ -1,21 +1,5 @@
 ﻿version: '3.1'
-
- #Docker Networks
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  appbuild:
-  dbvol:
-
-secrets:
-  MYSQL_DATABASE:
-    external: true
-  MYSQL_USER:
-    external: true
-  MYSQL_PASSWORD:
-    external: true
+ 
 services:
   app:
     build:
@@ -52,6 +36,8 @@ services:
         - '--user=mysql'
     networks:
       - app-network
+    depends_on:
+      - "app-network"
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -67,3 +53,19 @@ services:
     networks:
       - app-network
 
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  appbuild:
+  dbvol:
+
+secrets:
+  MYSQL_DATABASE:
+    external: true
+  MYSQL_USER:
+    external: true
+  MYSQL_PASSWORD:
+    external: true
