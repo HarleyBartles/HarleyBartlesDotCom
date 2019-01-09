@@ -21,6 +21,7 @@ services:
       - dbvol:/var/lib/mysql
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
+	env_file: secrets.env
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
     ports:
@@ -28,9 +29,6 @@ services:
     command:
       # Workaround for no my.cnf in image
         - '--user=mysql'
-    networks: app-network
-    secrets:
-      - MYSQL_PASSWORD
   https-portal:
     image: steveltn/https-portal:1
     ports:
@@ -53,8 +51,3 @@ networks:
 volumes:
   appbuild:
   dbvol:
-
-secrets:
-  env_file:
-    - secrets.env
-  MYSQL_PASSWORD:env_file.MYSQL_PASSWORD
