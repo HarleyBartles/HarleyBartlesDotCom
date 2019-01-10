@@ -1,4 +1,5 @@
-﻿using HBDotCom.Data;
+﻿using HBDotCom.Areas.Identity.Models;
+using HBDotCom.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,11 +16,13 @@ namespace HBDotCom
 {
     public class Startup
     {
-        private readonly string _connectionString;
+        private readonly string _dbConnectionString;
+        private readonly string _emailConnectionString;
 
         public IConfiguration Configuration { get; }
+        public IConfiguration Config { get; }
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfiguration config)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -28,13 +31,16 @@ namespace HBDotCom
             builder.AddEnvironmentVariables();
 
             Configuration = builder.Build();
+            Config = config;
+
 
             if (env.IsProduction())
             {
-                _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
+                _dbConnectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
+                _emailConnectionString = $@"{Configuration["EMAIL_APP_SETTING"]}";
             } else
             {
-                _connectionString = Configuration.GetConnectionString("DefaultConnection");
+                _dbConnectionString = Configuration.GetConnectionString("DefaultConnection");
             }
         }
         
@@ -48,8 +54,12 @@ namespace HBDotCom
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // Configure Identity
-            services.Configure<IdentityOptions>(options =>
+            WaitForDBInit(_dbConnectionString);
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(_dbConnectionString));
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
                 // Password settings
                 options.Password.RequireDigit = true;
@@ -57,15 +67,16 @@ namespace HBDotCom
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = false;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication().AddTwitter(twitterOptions =>
+            {
+                twitterOptions.ConsumerKey = Config["Authentication:Twitter:ConsumerKey"];
+                twitterOptions.ConsumerSecret = Config["Authentication:Twitter:ConsumerSecret"];
+                twitterOptions.RetrieveUserDetails = true;
             });
-
-            WaitForDBInit(_connectionString);
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(_connectionString));
-
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
