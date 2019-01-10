@@ -4,21 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-HBDotCom-2794BD56-661B-4E66-8B27-D41DB4AFD60E</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <Configurations>Debug;Release;Development</Configurations>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Data\Migrations\20190110105459_ApplicationUser1.cs" />
-    <Compile Remove="Data\Migrations\20190110105459_ApplicationUser1.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190110105636_ApplicationUser1.cs" />
-    <Compile Remove="Data\Migrations\20190110105636_ApplicationUser1.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190110110117_ApplicationUser1.cs" />
-    <Compile Remove="Data\Migrations\20190110110117_ApplicationUser1.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190110110408_UsersAndRoles.cs" />
-    <Compile Remove="Data\Migrations\20190110110408_UsersAndRoles.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190110111112_UsersAndRoles.cs" />
-    <Compile Remove="Data\Migrations\20190110111112_UsersAndRoles.Designer.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -29,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
+    <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
   
 </Project>

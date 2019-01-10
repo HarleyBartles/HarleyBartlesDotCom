@@ -9,20 +9,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using HBDotCom.Areas.Identity.Models;
 
 namespace HBDotCom.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<ExternalLoginModel> _logger;
 
         public ExternalLoginModel(
-            SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
             ILogger<ExternalLoginModel> logger)
         {
             _signInManager = signInManager;
@@ -89,74 +88,16 @@ namespace HBDotCom.Areas.Identity.Pages.Account
             else
             {
                 // If the user does not have an account, then ask the user to create an account.
-                // Here I'll try to change the behaviour to automagically create an account.
                 ReturnUrl = returnUrl;
                 LoginProvider = info.LoginProvider;
-
-                // Have we got an email?
                 if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
                 {
-                    // Call the private function to create the user
-                    string email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                    bool createUserResult = await PostBackSuccessCreateUserAsync(info, email);
-
-                    // Did that create ok?
-                    if (createUserResult)
+                    Input = new InputModel
                     {
-                        return LocalRedirect(returnUrl);
-                    }
-                    else
-                    {
-                        // Oops. Didn't create. Put the email address into the InputModel.
-                        Input = new InputModel
-                        {
-                            Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                        };
-                    }
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                    };
                 }
-                // User was not created. Return the confirmation page.
                 return Page();
-            }
-        }
-
-        private async Task<bool> PostBackSuccessCreateUserAsync(ExternalLoginInfo info, string email)
-        {
-            if (info == null)
-            {
-                ErrorMessage = "Error loading external login information during confirmation.";
-                return false;
-            }
-
-            if (email == null)
-            {
-                ErrorMessage = "Error loading external login information. No Email Address";
-                return false;
-            }
-            {
-                string userName = "";
-                bool hasUserName = false;
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Name))
-                {
-                    userName = info.Principal.FindFirstValue(ClaimTypes.Name);
-                    hasUserName = true;
-                }
-                var user = new ApplicationUser { UserName = hasUserName ? userName : email, Email = email };
-                var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-                        return true;
-                    }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return false;
             }
         }
 
@@ -173,7 +114,7 @@ namespace HBDotCom.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
