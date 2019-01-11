@@ -17,11 +17,13 @@ namespace HBDotCom.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -38,8 +40,8 @@ namespace HBDotCom.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            [Display(Name = "Email or UserName")]
+            public string EmailOrUsername { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -56,7 +58,7 @@ namespace HBDotCom.Areas.Identity.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? "~/";
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -68,13 +70,34 @@ namespace HBDotCom.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? "~/";
 
             if (ModelState.IsValid)
             {
+                var user = await _userManager.FindByEmailAsync(Input.EmailOrUsername);
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(Input.EmailOrUsername, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                if (!result.Succeeded)
+                {
+                    if (user != null)
+                    {
+                        if (user.PasswordHash != null)
+                        {
+                            result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                            if (result.Succeeded)
+                            {
+                                _logger.LogInformation("User logged in.");
+                                return LocalRedirect(returnUrl);
+                            }
+                        }
+                        if (user.PasswordHash == null)
+                        {
+                            return RedirectToPage("SetPassword");
+                        };
+                    }
+                }
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");

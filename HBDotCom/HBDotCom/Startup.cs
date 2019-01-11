@@ -20,8 +20,9 @@ namespace HBDotCom
         private readonly string _connectionString;
 
         public IConfiguration Configuration { get; }
+        public IConfiguration BuilderConfig { get; }
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -29,11 +30,12 @@ namespace HBDotCom
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
             builder.AddEnvironmentVariables();
 
-            Configuration = builder.Build();
+            BuilderConfig = builder.Build();
+            Configuration = configuration;
 
             if (env.IsProduction())
             {
-                _connectionString = $@"Server={Configuration["MYSQL_SERVER_NAME"]};Database={Configuration["MYSQL_DATABASE"]};Uid={Configuration["MYSQL_USER"]};Pwd={Configuration["MYSQL_PASSWORD"]}";
+                _connectionString = $@"Server={BuilderConfig["MYSQL_SERVER_NAME"]};Database={BuilderConfig["MYSQL_DATABASE"]};Uid={BuilderConfig["MYSQL_USER"]};Pwd={BuilderConfig["MYSQL_PASSWORD"]}";
             } else
             {
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -75,6 +77,20 @@ namespace HBDotCom
             //services.AddDefaultIdentity<ApplicationUser>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>()
             //    .AddDefaultTokenProviders();
+
+
+            services.AddAuthentication()
+                .AddTwitter(twitterOptions =>
+                {
+                    twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
+                    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+                    twitterOptions.RetrieveUserDetails = true;
+                })
+                .AddGoogle(googleOptions =>
+                {
+
+                });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
