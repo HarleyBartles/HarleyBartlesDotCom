@@ -6,6 +6,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.development.*
+*.Development.*
 MyHowTo.txt
 secrets.env
 

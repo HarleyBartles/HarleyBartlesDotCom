@@ -3,16 +3,14 @@ using System;
 using HBDotCom.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HBDotCom.Data.Migrations
+namespace HBDotCom.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190110112153_UsersAndRoles")]
-    partial class UsersAndRoles
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
