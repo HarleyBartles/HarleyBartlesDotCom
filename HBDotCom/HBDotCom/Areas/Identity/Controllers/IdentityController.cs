@@ -17,11 +17,15 @@ namespace HBDotCom.Areas.Identity.Controllers
             _userManager = userManager;
         }
 
-        public bool UserNameCheck(string username)
+        public async Task<bool> NameAvailabilityCheck(string name)
         {
-            username = username.ToLower();
-            ApplicationUser user = _userManager.FindByNameAsync(username).Result;
+            name = name.ToLower();
+            ApplicationUser user = await _userManager.FindByNameAsync(name);
 
+            if (user != null)
+                return false;
+
+            user = await _userManager.FindByEmailAsync(name);
             if (user != null)
                 return false;
 
