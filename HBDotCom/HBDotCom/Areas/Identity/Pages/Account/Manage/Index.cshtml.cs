@@ -88,6 +88,17 @@ namespace HBDotCom.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            var uName = await _userManager.GetUserNameAsync(user);
+            if (Input.Username != uName)
+            {
+                var setUNameResult = await _userManager.SetUserNameAsync(user, Input.Username);
+                if (!setUNameResult.Succeeded)
+                {
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    throw new InvalidOperationException($"Unexpected error occurred setting email for user with ID '{userId}'.");
+                }
+            }
+
             var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {
