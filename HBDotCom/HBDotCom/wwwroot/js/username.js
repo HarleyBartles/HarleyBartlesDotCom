@@ -1,16 +1,23 @@
 ﻿$(function () {
-    $("#userName").change(function () {
-        var username = $(this).val();
+    $('.validate-availability').change(function () {
+        var $this = $(this);
+        var name = $(this).val();
+        console.log(name);
         $.ajax({
-            url: '/Identity/UserNameCheck',
+            url: '/Identity/NameAvailabilityCheck',
             data: {
-                username: username
+                name: name
             }
         }).done(function (data) {
+            var out = $('[data-valmsg-for="' + $($this).attr('name') + '"]');
             if (data === false) {
-                alert(username + " is Unvailable");
+                $(out).text(name + " is Unvailable")
+                    .removeClass('text-success')
+                    .addClass('text-danger');
             } else {
-                alert(username + " is Available");
+                $(out).text(name + " is Available")
+                    .removeClass('text-danger')
+                    .addClass('text-success');
             }
         });
     });

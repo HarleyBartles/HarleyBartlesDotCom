@@ -28,8 +28,6 @@ namespace HBDotCom.Areas.Identity.Pages.Account.Manage
             _emailSender = emailSender;
         }
 
-        public string Username { get; set; }
-
         public bool IsEmailConfirmed { get; set; }
 
         [TempData]
@@ -40,6 +38,10 @@ namespace HBDotCom.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Required]
+            [MaxLength(20)]
+            public string Username { get; set; }
+
             [Required]
             [EmailAddress]
             public string Email { get; set; }
@@ -61,10 +63,9 @@ namespace HBDotCom.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            Username = userName;
-
             Input = new InputModel
             {
+                Username = userName,
                 Email = email,
                 PhoneNumber = phoneNumber
             };

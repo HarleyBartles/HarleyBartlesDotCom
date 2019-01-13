@@ -42,9 +42,21 @@ namespace HBDotCom.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            public string UserName { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -63,22 +75,27 @@ namespace HBDotCom.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
+
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
+
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = "Error loading external login information for user.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
-            // Sign in the user with this external login provider if the user already has a login linked with this provider
+            // Sign in the user with this external login provider
+            // Only if the user already has a login linked with this provider
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
             if (result.Succeeded)
             {
+                // User has a previous login linked with this provider
+                // They are successfully logged in.
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 return LocalRedirect(returnUrl);
             }
@@ -88,12 +105,15 @@ namespace HBDotCom.Areas.Identity.Pages.Account
             }
             else
             {
-                // If the user does not have an account, then ask the user to create an account.
-                // Here I'll try to change the behaviour to automagically create an account.
+                
+                // Here, if we already have a user with the same email address, we'll log them into their account.
+                // If they don't have a site account yet I'll ask the user for a password and create the account from that
+                // This will utilise the existing scaffolded structure much better and ensure a user has a password.
 
                 ReturnUrl = returnUrl;
                 LoginProvider = info.LoginProvider;
 
+                // Email address is the primary key linking the same user across providers.
                 // Have we got an email?
                 if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
                 {
@@ -103,75 +123,28 @@ namespace HBDotCom.Areas.Identity.Pages.Account
                     var alreadyRegisteredUser = await _userManager.FindByEmailAsync(email);
                     if (alreadyRegisteredUser != null)
                     {
-                        // We Do - Login
+                        // We do have this user in our DB by email
+                        // Let's log them in
                         await _signInManager.SignInAsync(alreadyRegisteredUser, isPersistent: false);
+                        await _userManager.AddLoginAsync(alreadyRegisteredUser, info);
                         return LocalRedirect(returnUrl);
                     }
-                    // We dont hae a user matching by email, lets create him
-                    // Call the private function to create the user
-                    bool createUserResult = await PostBackSuccessCreateUserAsync(info, email);
 
-                    // Did that create ok?
-                    if (createUserResult)
+                    // We dont have a user matching this email
+                    // Let's ask them to set a password in order to create an account
+                    Input = new InputModel
                     {
-                        return LocalRedirect(returnUrl);
-                    }
-                    else
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                    };
+                    if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Name))
                     {
-                        // Oops. Didn't create. Put the email address into the InputModel.
-                        Input = new InputModel
-                        {
-                            Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                        };
+                        // We do have a username returned to us by the login provider
+                        // We'll also put that username into a variable for easy use below
+                        Input.UserName = info.Principal.FindFirstValue(ClaimTypes.Name).Replace(" ", "_");
                     }
+
                 }
-                // User was not created. Return the confirmation page.
                 return Page();
-            }
-        }
-
-        private async Task<bool> PostBackSuccessCreateUserAsync(ExternalLoginInfo info, string email)
-        {
-            if (info == null)
-            {
-                ErrorMessage = "Error loading external login information during confirmation.";
-                return false;
-            }
-
-            if (email == null)
-            {
-                ErrorMessage = "Error. No Email Address";
-                return false;
-            }
-            {
-                // Some locals
-                string userName = "";
-                bool hasUserName = false;
-
-                // Do we have a username?
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Name))
-                {
-                    // we do!
-                    userName = info.Principal.FindFirstValue(ClaimTypes.Name);
-                    hasUserName = true;
-                }
-                var user = new ApplicationUser { UserName = hasUserName ? userName : email, Email = email };
-                var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-                        return true;
-                    }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return false;
             }
         }
 
@@ -188,12 +161,17 @@ namespace HBDotCom.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user);
+                var email = info.Principal.HasClaim(c => c.Type == ClaimTypes.Name) ? info.Principal.FindFirstValue(ClaimTypes.Email) : Input.Email;
+                var userName = info.Principal.HasClaim(c => c.Type == ClaimTypes.Name) ? info.Principal.FindFirstValue(ClaimTypes.Name).Replace(" ", "_") : email;
+
+                var user = new ApplicationUser {
+                    UserName = userName,
+                    Email = email };
+                var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
+                    var identityResult = await _userManager.AddLoginAsync(user, info);
+                    if (identityResult.Succeeded)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);

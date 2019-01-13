@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-default">Log in</button>
+                    <button type="submit" class="btn btn-outline-secondary">Log in</button>
                 </div>
                 <div class="form-group">
                     <p>
@@ -45,7 +45,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-6">
         <section>
             <h4>Use another service to log in.</h4>
             <hr />
@@ -66,7 +66,10 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+
+                                    <button type="submit" class=" btn btn-outline-secondary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                        <i class="fa fa-2x fa-@provider.Name.ToLower()"></i>
+                                    </button>
                                 }
                             </p>
                         </div>

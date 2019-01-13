@@ -79,28 +79,12 @@ namespace HBDotCom.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.EmailOrUsername, Input.Password, Input.RememberMe, lockoutOnFailure: true);
-                if (!result.Succeeded)
-                {
-                    if (user != null)
-                    {
-                        if (user.PasswordHash != null)
-                        {
-                            result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
-                            if (result.Succeeded)
-                            {
-                                _logger.LogInformation("User logged in.");
-                                return LocalRedirect(returnUrl);
-                            }
-                        }
-                        if (user.PasswordHash == null)
-                        {
-                            return RedirectToPage("SetPassword");
-                        };
-                    }
-                }
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    if (user == null)
+                    {
+                        return Page();
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
