@@ -44,7 +44,7 @@ services:
           production:{
               DOMAINS: 'harleybartles.xyz -> http://app:5000'
               STAGE: 'staging'
-          }
+          },
           staging:{
             DOMAINS: 'harleybartles.com -> http://app:5000'
               STAGE: 'production'
