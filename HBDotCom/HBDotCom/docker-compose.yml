@@ -11,7 +11,6 @@ services:
       - db
     env_file: secrets.env
     environment:
-      ASPNETCORE_HTTPS_PORT: 443
       MYSQL_SERVER_NAME: perconaserver
       MYSQL_DATABASE: mysql
   db:
@@ -41,9 +40,10 @@ services:
       - app
     restart: always
     environment:
-      DOMAINS: 'harleybartles.com -> http://app:5000'
-      STAGE: 'production'
+      DOMAINS: 'stage.harleybartles.com -> http://app:5000'
+      STAGE: 'staging'
       #FORCE_RENEW: 'true'
+      Force_
 
 volumes:
   appbuild:
