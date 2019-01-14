@@ -34,7 +34,7 @@ namespace HBDotCom
             BuilderConfig = builder.Build();
             Configuration = configuration;
 
-            if (env.IsProduction())
+            if (env.IsProduction() || env.IsStaging())
             {
                 _connectionString = $@"Server={BuilderConfig["MYSQL_SERVER_NAME"]};Database={BuilderConfig["MYSQL_DATABASE"]};Uid={BuilderConfig["MYSQL_USER"]};Pwd={BuilderConfig["MYSQL_PASSWORD"]}";
             } else
