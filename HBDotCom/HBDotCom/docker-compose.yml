@@ -40,7 +40,7 @@ services:
       - app
     restart: always
     environment:
-      DOMAINS: 'stage.harleybartles.com -> http://app:5000'
+      DOMAINS: 'harleybartles.com -> http://app:5000'
       STAGE: 'staging'
       #FORCE_RENEW: 'true'
 
