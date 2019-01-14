@@ -41,6 +41,7 @@ services:
     restart: always
     env_file: secrets.env
     environment:
+      ${VIRTUALHOST}=env_file.VIRTUALHOST
       DOMAINS: ${VIRTUALHOST} -> http://app:5000
       STAGE: ${ASPNETCORE_ENVIRONMENT}
       #FORCE_RENEW: 'true'
