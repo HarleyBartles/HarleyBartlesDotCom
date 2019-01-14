@@ -40,7 +40,7 @@ services:
       - app
     restart: always
     environment:
-      DOMAINS: '${VIRTUALHOST}' -> http://app:5000'
+      DOMAINS: ${VIRTUALHOST} -> http://app:5000
       STAGE: ${ASPNETCORE_ENVIRONMENT}
       
       #FORCE_RENEW: 'true'
