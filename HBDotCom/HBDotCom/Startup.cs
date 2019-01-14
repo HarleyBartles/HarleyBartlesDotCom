@@ -21,6 +21,7 @@ namespace HBDotCom
 
         public IConfiguration Configuration { get; }
         public IConfiguration BuilderConfig { get; }
+        private readonly IHostingEnvironment _env;
 
         public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
@@ -40,6 +41,8 @@ namespace HBDotCom
             {
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
             }
+
+            _env = env;
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -78,8 +81,9 @@ namespace HBDotCom
             //    .AddEntityFrameworkStores<ApplicationDbContext>()
             //    .AddDefaultTokenProviders();
 
-
-            services.AddAuthentication()
+            if (_env.IsDevelopment())
+            {
+                services.AddAuthentication()
                 .AddTwitter(twitterOptions =>
                 {
                     twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
@@ -96,6 +100,27 @@ namespace HBDotCom
                     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                     facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 });
+            } else
+            {
+                services.AddAuthentication()
+                .AddTwitter(twitterOptions =>
+                {
+                    twitterOptions.ConsumerKey = ${Twi;
+                    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+                    twitterOptions.RetrieveUserDetails = true;
+                })
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                })
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                });
+            }
+            
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
