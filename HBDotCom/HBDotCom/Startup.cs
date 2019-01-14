@@ -125,9 +125,15 @@ namespace HBDotCom
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.Use((httpContext, next) =>
+            {
+                httpContext.Request.Scheme = "https";
+                return next();
+            });
+
             app.UseAuthentication();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseMvc(routes =>
             {
