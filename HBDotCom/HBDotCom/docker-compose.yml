@@ -27,9 +27,9 @@ services:
       #MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306"
-    #command:
+    command:
       # Workaround for no my.cnf in image
-        #- '--user=mysql'
+        - '--user=mysql'
   https-portal:
     image: steveltn/https-portal:1
     ports:
