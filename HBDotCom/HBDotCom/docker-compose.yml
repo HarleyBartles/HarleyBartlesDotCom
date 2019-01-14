@@ -11,7 +11,7 @@ services:
       - db
     env_file: secrets.env
     environment:
-      ASPNETCORE_HTTPS_PORT: 5000
+      ASPNETCORE_HTTPS_PORT: 443
       MYSQL_SERVER_NAME: perconaserver
       MYSQL_DATABASE: mysql
   db:
