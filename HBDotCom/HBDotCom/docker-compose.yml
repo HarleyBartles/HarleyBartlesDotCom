@@ -42,9 +42,9 @@ services:
       - app
     restart: always
     env_file: secrets.env
-    environment:
-      DOMAINS: ${VIRTUALHOST} -> http://app:5000
-      STAGE: ${ASPNETCORE_ENVIRONMENT}
+    #environment:
+      #DOMAINS: ${VIRTUALHOST} -> http://app:5000
+      #STAGE: ${ASPNETCORE_ENVIRONMENT}
       #FORCE_RENEW: 'true'
 
 volumes:
