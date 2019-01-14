@@ -34,12 +34,12 @@ namespace HBDotCom
             BuilderConfig = builder.Build();
             Configuration = configuration;
 
-            if (env.IsProduction() || env.IsStaging())
-            {
-                _connectionString = $@"Server={BuilderConfig["MYSQL_SERVER_NAME"]};Database={BuilderConfig["MYSQL_DATABASE"]};Uid={BuilderConfig["MYSQL_USER"]};Pwd={BuilderConfig["MYSQL_PASSWORD"]}";
-            } else
+            if (env.IsDevelopment())
             {
                 _connectionString = Configuration.GetConnectionString("DefaultConnection");
+            } else
+            {
+                _connectionString = $@"Server={BuilderConfig["MYSQL_SERVER_NAME"]};Database={BuilderConfig["MYSQL_DATABASE"]};Uid={BuilderConfig["MYSQL_USER"]};Pwd={BuilderConfig["MYSQL_PASSWORD"]}";
             }
 
             _env = env;
@@ -152,7 +152,7 @@ namespace HBDotCom
             {
                 try
                 {
-                    Console.WriteLine("Connecting to db. Trial: {0}", retries);
+                    Console.WriteLine("Connecting to db. Trial: {0} with {1}", retries, connectionString);
                     connection.Open();
                     connection.Close();
                     break;
