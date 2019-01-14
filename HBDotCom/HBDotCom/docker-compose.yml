@@ -22,7 +22,7 @@ services:
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
     env_file: secrets.env
-    environment:
+    #environment:
     ports:
       - "3306"
     command:
