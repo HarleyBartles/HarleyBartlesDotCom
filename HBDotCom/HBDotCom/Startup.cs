@@ -127,6 +127,8 @@ namespace HBDotCom
 
             app.UseAuthentication();
 
+            app.UseHttpsRedirection();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
