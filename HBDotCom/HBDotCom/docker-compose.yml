@@ -11,10 +11,6 @@ services:
       - db
     env_file: secrets.env
     #environment:
-      #MYSQL_SERVER_NAME: perconaserver
-      #MYSQL_DATABASE: mysql
-      #MYSQL_USER: root
-      #MYSQL_PASSWORD: D4v1ds0n6514
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -26,8 +22,6 @@ services:
       # - $PWD/my.cnf:/etc/my.cnf
     env_file: secrets.env
     #environment:
-      #MYSQL_ROOT_PASSWORD: D4v1ds0n6514
-      #MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306"
     command:
@@ -43,8 +37,6 @@ services:
     restart: always
     env_file: secrets.env
     #environment:
-      #DOMAINS: ${VIRTUALHOST} -> http://app:5000
-      #STAGE: ${ASPNETCORE_ENVIRONMENT}
       #FORCE_RENEW: 'true'
 
 volumes:
