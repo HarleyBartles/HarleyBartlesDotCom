@@ -40,8 +40,17 @@ services:
       - app
     restart: always
     environment:
-      DOMAINS: 'harleybartles.com -> http://app:5000'
-      STAGE: 'staging'
+      STAGE: {
+          production:{
+              DOMAINS: 'harleybartles.xyz -> http://app:5000'
+              STAGE: 'staging'
+          }
+          staging:{
+            DOMAINS: 'harleybartles.com -> http://app:5000'
+              STAGE: 'production'
+          }
+      }
+      
       #FORCE_RENEW: 'true'
 
 volumes:
