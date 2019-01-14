@@ -23,7 +23,7 @@ services:
       # - $PWD/my.cnf:/etc/my.cnf
     env_file: secrets.env
     environment:
-      MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306"
     command:
