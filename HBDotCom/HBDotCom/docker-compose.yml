@@ -22,7 +22,8 @@ services:
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
     env_file: secrets.env
-    #environment:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306"
     command:
