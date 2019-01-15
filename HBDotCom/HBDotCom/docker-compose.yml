@@ -5,6 +5,7 @@ services:
     build:
       context:  ./
       dockerfile: Dockerfile
+    container_name: app
     volumes:
       - appbuild:/app
     links:
@@ -29,6 +30,7 @@ services:
         - '--user=mysql'
   https-portal:
     image: steveltn/https-portal:1
+    container_name: httpsportal
     ports:
       - '80:80'
       - '443:443'
