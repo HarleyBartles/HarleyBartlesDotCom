@@ -5,16 +5,16 @@ services:
     build:
       context:  ./
       dockerfile: Dockerfile
+    container_name: app
     volumes:
       - appbuild:/app
     links:
       - db
-    env_file: secrets.env
+    env_file: 
+      - authentication.env
+      - mysqlconnection.env
+      - environment.env
     #environment:
-      #MYSQL_SERVER_NAME: perconaserver
-      #MYSQL_DATABASE: mysql
-      #MYSQL_USER: root
-      #MYSQL_PASSWORD: D4v1ds0n6514
   db:
     image: percona/percona-server:latest
     container_name: perconaserver
@@ -24,10 +24,8 @@ services:
       - dbvol:/var/lib/mysql
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
-    env_file: secrets.env
+    env_file: mysqlconnection.env
     #environment:
-      #MYSQL_ROOT_PASSWORD: D4v1ds0n6514
-      #MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306"
     command:
@@ -35,16 +33,15 @@ services:
         - '--user=mysql'
   https-portal:
     image: steveltn/https-portal:1
+    container_name: httpsportal
     ports:
       - '80:80'
       - '443:443'
     links:
       - app
     restart: always
-    env_file: secrets.env
+    env_file: httpsportal.env
     #environment:
-      #DOMAINS: ${VIRTUALHOST} -> http://app:5000
-      #STAGE: ${ASPNETCORE_ENVIRONMENT}
       #FORCE_RENEW: 'true'
 
 volumes:
