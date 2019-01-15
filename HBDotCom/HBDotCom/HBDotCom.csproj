@@ -30,10 +30,12 @@
     <None Include=".gitignore\env\environment.env.staging" />
     <None Include=".gitignore\env\httpsportal.env" />
     <None Include=".gitignore\env\httpsportal.env.staging" />
+    <None Include=".gitignore\env\mysqlconnection.env" />
+    <None Include=".gitignore\env\secrets.env" />
     <None Include=".gitignore\env\secrets.env.staging" />
     <None Include=".gitignore\MyHowTo.txt" />
+    <None Include=".gitignore\rebuild" />
     <None Include=".gitignore\rebuild.staging" />
-    <None Include=".gitignore\env\secrets.env" />
   </ItemGroup>
 
   <ItemGroup>
