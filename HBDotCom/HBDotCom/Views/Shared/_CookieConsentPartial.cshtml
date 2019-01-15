@@ -10,7 +10,7 @@
 {
     <nav id="cookieConsent" class="navbar navbar-expand-md" role="alert">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header w-100 w-md-auto text-center">
                 <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -18,15 +18,19 @@
                         aria-controls="cookieCollapse"
                         aria-expanded="false"
                         aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa fa-info-circle mr-3"></i>
+                    <span class="ml-3">Cookie information. Tap here.</span>
                 </button>
-                <span class="navbar-brand"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
+                <span class="navbar-brand d-none d-md-block">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                </span>
             </div>
             <div id="cookieCollapse"class="collapse navbar-collapse">
-                <p class="navbar-text mx-auto">
-                    I have to tell you that I use cookies on this site. Hit the accept button to make this message go away forever.
+                <p class="navbar-text mr-auto ml-3 mt-3 text-center text-md-left">
+                    I use cookies on this site in order to make it the best it can be.<br />
+                    Hit the accept button if you're cool with that.
                 </p>
-                <div class="navbar-right mx-auto">
+                <div class="mx-auto mr-md-0 text-center">
                     <a asp-controller="Home" asp-action="Privacy" class="btn btn-info navbar-btn">Learn More</a>
                     <button type="button" class="btn btn-outline-secondary navbar-btn" data-cookie-string="@cookieString">Accept</button>
                 </div>
