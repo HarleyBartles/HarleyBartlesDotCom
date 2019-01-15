@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include=".gitignore\env\mysqlconnection.env" />
+    <Content Include=".gitignore\rebuild" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
@@ -16,6 +21,19 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".gitignore\env\authentication.env" />
+    <None Include=".gitignore\env\authentication.env.staging" />
+    <None Include=".gitignore\env\environment.env" />
+    <None Include=".gitignore\env\environment.env.staging" />
+    <None Include=".gitignore\env\httpsportal.env" />
+    <None Include=".gitignore\env\httpsportal.env.staging" />
+    <None Include=".gitignore\env\secrets.env.staging" />
+    <None Include=".gitignore\MyHowTo.txt" />
+    <None Include=".gitignore\rebuild.staging" />
+    <None Include=".gitignore\env\secrets.env" />
   </ItemGroup>
 
   <ItemGroup>
