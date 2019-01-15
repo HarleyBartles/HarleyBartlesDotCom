@@ -25,8 +25,12 @@
 
   <ItemGroup>
     <None Include=".gitignore\env\authentication.env" />
+    <None Include=".gitignore\env\authentication.env.staging" />
     <None Include=".gitignore\env\environment.env" />
+    <None Include=".gitignore\env\environment.env.staging" />
     <None Include=".gitignore\env\httpsportal.env" />
+    <None Include=".gitignore\env\httpsportal.env.staging" />
+    <None Include=".gitignore\env\secrets.env.staging" />
     <None Include=".gitignore\MyHowTo.txt" />
     <None Include=".gitignore\rebuild.staging" />
     <None Include=".gitignore\env\secrets.env" />
