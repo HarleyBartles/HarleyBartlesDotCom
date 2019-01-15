@@ -11,6 +11,7 @@
 MyHowTo.txt
 secrets.env
 appsettings.Development.json
+.gitignore/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
