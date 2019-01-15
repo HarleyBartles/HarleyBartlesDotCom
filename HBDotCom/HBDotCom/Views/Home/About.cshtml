@@ -2,12 +2,30 @@
     ViewData["Title"] = "About me";
 }
 
+<div class="row position-md-relative">
+    <div class="col-xs-12">
+        <img class="w-100" src="~/images/banners/hello-banner.jpg" />
+    </div>
+    <div class="col-xs-12 position-md-absolute position-md-bottom-right">
+        <div class="text-inner p-md-5 text-md-light">
+            <h2>@ViewData["Title"]</h2>
+            <h3>@ViewData["Message"]</h3>
+        </div>
+        
+    </div>
+</div>
 
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-
+<div class="row">
+    <div class="col">
+        <h2>Hello there!</h2>
+        <h4>If you're reading this you're probably interested in employing me. To download my CV&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-secondary" href="~/static/HarleyBartlesCV.docx">click here</a></h4>
+    </div>
+</div>
 <div class="panel-group">
+    <div class="panel panel-default">
+        <h2>Overview</h2>
+    </div>
     <div id="FRONTEND" class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title wow animated fadeInUp">Front End Skills</h3></div>
         <div class="panel-body">

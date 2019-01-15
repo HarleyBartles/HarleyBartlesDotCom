@@ -45,21 +45,16 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 /* Slide 2 */
 .carousel-item:nth-child(2) .carousel-caption
 {
-
 }
-
-.w-auto { width: auto !important; }
 
 /* Small devices (landscape phones, 576px and up) */ 
 @media (min-width: 576px)
 {
-    .w-sm-auto { width: auto !important; }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px)
 {
-    .w-md-auto { width: auto !important; }
     .navbar .container
     {
         max-height: 3rem;
@@ -90,7 +85,6 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px)
 {
-    .w-lg-auto { width: auto !important; }
     .carousel-item:nth-child(1) .carousel-caption h3
     {
         margin-bottom: 30%;
@@ -105,8 +99,6 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px)
 {
-    .w-xl-auto { width: auto !important; }
-
     .carousel-item:nth-child(1) .carousel-caption h3
     {
         margin-bottom: auto;
@@ -123,12 +115,11 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
 
 
 /* Max width breaks */
-/* XS */
+/* SM-DOWN */
 @media (max-width:575.9px){
-
 }
 
-/* SM */
+/* MD-DOWN */
 @media (max-width:767.9px)
 {
     .site-logo
@@ -146,45 +137,3 @@ h1, h2, h3, h4, h5 {font-family: 'Oswald', Cooper, sans-serif}
             max-width: 25%;
         }
 }
-
-/* MD */
-@media (max-width:991.9px){
-}
-
-/* LG */
-@media (max-width:1199.9px)
-{
-}
-
-/* XL */
-/* No Upper Bound */
-        
-/* Global (No Breaks) */
-
-/* Progress Width Helpers */
-.progress-bar.w-10 { width: 10%; }
-.progress-bar.w-20 { width: 20%; }
-.progress-bar.w-25 { width: 25%; }
-.progress-bar.w-30 { width: 30%; }
-.progress-bar.w-40 { width: 40%; }
-.progress-bar.w-50 { width: 50%; }
-.progress-bar.w-60 { width: 60%; }
-.progress-bar.w-70 { width: 70%; }
-.progress-bar.w-75 { width: 75%; }
-.progress-bar.w-80 { width: 80%; }
-.progress-bar.w-90 { width: 90%; }
-.progress-bar.w-100 { width: 100%; }
-
-/* Animation Helpers */
-.animated.delay-0_1s { animation-delay: 0.1s; }
-.animated.delay-0_25s { animation-delay: 0.25s; }
-.animated.delay-0_5s { animation-delay: 0.5s; }
-.animated.delay-0_75s { animation-delay: 0.75s; }
-.animated.delay-1_25s { animation-delay: 1.25s; }
-.animated.delay-1_5s { animation-delay: 1.5s; }
-.animated.delay-1_75s { animation-delay: 1.75s; }
-
-/* Animations */
-@-webkit-keyframes growBars { from { width: 0; } }
-@keyframes growBars { from { width: 0; } }
-.growBars { -webkit-animation-name: growBars; animation-name: growBars; }
