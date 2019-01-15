@@ -10,7 +10,10 @@ services:
       - appbuild:/app
     links:
       - db
-    env_file: secrets.env
+    env_file: 
+      - authentication.env
+      - mysqlconnection.env
+      - environment.env
     #environment:
   db:
     image: percona/percona-server:latest
@@ -21,7 +24,7 @@ services:
       - dbvol:/var/lib/mysql
       # bind mount my local my.cnf
       # - $PWD/my.cnf:/etc/my.cnf
-    env_file: secrets.env
+    env_file: mysqlconnection.env
     #environment:
     ports:
       - "3306"
@@ -37,7 +40,7 @@ services:
     links:
       - app
     restart: always
-    env_file: secrets.env
+    env_file: httpsportal.env
     #environment:
       #FORCE_RENEW: 'true'
 
