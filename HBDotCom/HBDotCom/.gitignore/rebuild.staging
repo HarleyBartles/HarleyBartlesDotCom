@@ -1,0 +1,35 @@
+﻿#!/bin/bash
+
+returnLocation=$(pwd)
+branch="staging"
+
+cd ~/HarleyBartlesDotCom/HBDotCom/HBDotCom
+
+echo "Fetching from "+$branch+" branch"
+git fetch origin $branch
+
+UPSTREAM=${1:-'@{u}'}
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse "$UPSTREAM")
+BASE=$(git merge-base @ "$UPSTREAM")
+
+if [ $LOCAL = $REMOTE ]; then
+   echo "Up-to-date"
+elif [ $LOCAL = $BASE ]; then
+   echo "Pulling newer files"
+   git pull origin $branch
+   echo "Stopping running containers"
+   docker stop $(docker ps -aq)
+   echo "Rebuilding app"
+   docker-compose up --build -d
+   echo "Cleaning up"
+   docker image prune -f
+elif [ $REMOTE = $BASE ]; then
+   echo "Need to push"
+else
+   echo "Diverged"
+fi
+
+echo "Nothing more to do here"
+cd $returnLocation
+
