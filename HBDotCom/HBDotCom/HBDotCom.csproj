@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Content Include=".gitignore\env\mysqlconnection.env" />
-    <Content Include=".gitignore\rebuild" />
+    <Content Include=".gitignore\rebuild.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,8 +34,6 @@
     <None Include=".gitignore\env\secrets.env" />
     <None Include=".gitignore\env\secrets.env.staging" />
     <None Include=".gitignore\MyHowTo.txt" />
-    <None Include=".gitignore\rebuild" />
-    <None Include=".gitignore\rebuild.staging" />
   </ItemGroup>
 
   <ItemGroup>
