@@ -24,7 +24,7 @@ namespace HBDotCom.Controllers
 
         public IActionResult AboutSite()
         {
-            ViewData["Message"] = "What is this site?";
+            ViewData["Message"] = "So what is it?";
 
             return View();
         }

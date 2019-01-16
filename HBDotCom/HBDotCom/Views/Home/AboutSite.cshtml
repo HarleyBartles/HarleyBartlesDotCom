@@ -2,16 +2,142 @@
     ViewData["Title"] = "About This Site";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="row position-md-relative">
+    <div class="col-12">
+        <img class="w-100" src="~/images/banners/macbook-banner.jpg" />
+    </div>
+    <div class="col-12 position-md-absolute position-center position-md-top-center">
+        <div class="text-inner p-3 text-md-dark">
+            <h2 class="wow fadeInUp">@ViewData["Title"]</h2>
+            <h4 class="wow fadeInUp delay-0_25s">@ViewData["Message"]</h4>
+        </div>
 
-<h3>What is it?</h3>
-<p>Well, it's kinda supposed to be my portfolio site, but I'll probably use it for all kinds of other fun stuff.</p>
+    </div>
+</div>
 
-<h3>What's it made of?</h3>
-<p>The site is powered by .net core 2.2 and architected using the MVVMC pattern. It's currently running in a docker container inside a droplet at <a href="www.digitalocean.com" target="_blank">Digital Ocean</a>.</p>
+<div class="row">
 
-<h3>Why?</h3>
-<p>I'm primarily a .net Core software engineer so it makes sense to build my site using the Microsoft .net core stack.</p>
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/net-core_logo.svg" alt=".NET Core 2">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">.NET Core</h5>
+                <p class="card-text">This site is created in .NET Core 2.1</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.2" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
 
-<h3>Anything else?</h3>
-<p>I'm sure there is. When I remember what it is, I'll update this page. Check back soon.</p>
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_1s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/percona-logo.png" alt="Percona Server">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Percona</h5>
+                <p class="card-text">Database is provided by Percona, which is a fork of MySQL</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://www.percona.com/" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_2s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/docker-logo.png" alt="Docker">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Docker</h5>
+                <p class="card-text">The site is running in multiple live Docker containers.</p>
+
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://www.docker.com/" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_3s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/digitalocean-logo.png" alt="DigitalOcean">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">DigitalOcean</h5>
+                <p class="card-text">The containers are running in a droplet (Linux VM) at DigitalOcean</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://www.digitalocean.com" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/visual-studio-2017-logo.png" alt="Visual Studio 2017">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Visual Studio 2017</h5>
+                <p class="card-text">I use Visual Studio 2017 as my development IDE. I'm excited for the forthcoming 2019 release.</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://visualstudio.microsoft.com/" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_1s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/github-logo.png" alt="GitHub">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">GitHub</h5>
+                <p class="card-text">I use GitHub for source control and deployment to staging and production environments.</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://github.com/HarleyBartles" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_2s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/csharp-logo.png" alt="C Sharp">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">C#</h5>
+                <p class="card-text">The site is coded in C#, which is widely regarded as the standard language for this type of application</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://en.wikipedia.org/wiki/C-sharp" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3 mt-3 wow fadeInUp delay-0_3s">
+        <div class="card border-secondary bg-light h-100">
+            <div class="card-img-top bg-dark h-25 text-center">
+                <img class="card-img p-3 mh-100 w-auto mw-100" src="~/images/logos/bootstrap-4-logo.png" alt="Bootstrap 4">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Bootstrap</h5>
+                <p class="card-text">The site relies heavily on Twitter's Bootstrap framework. Currently using the latest Bootstrap 4 with powerful FlexBox utilities.</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="https://getbootstrap.com/" target="_blank" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
