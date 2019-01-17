@@ -41,7 +41,7 @@
               integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
               crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
-        <link rel="stylesheet" href="~/css/bootstrap-helper.css" casp-append-version=true />
+        <link rel="stylesheet" href="~/css/bootstrap-helper.css" asp-append-version=true />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
 </head>
@@ -66,7 +66,6 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About Me</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutSite">About This Site</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
@@ -78,7 +77,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    @if (ViewBag.Title != "Home Page" && ViewBag.Title != "About me")
+    @if (ViewBag.Spacer != "None")
     {
         <div class="content-spacer d-none d-md-block"></div>
     }
@@ -92,11 +91,12 @@
                 <div class="col-sm">
                     <div class="row">
                         <div class="col-6 col-sm-12">
-                            <h3>POWERED BY</h3>
+                            <h3>HAND CODED WITH LOVE IN</h3>
                         </div>
                         <div class="col-6 col-sm-12">
                             <a href="https://dotnet.microsoft.com/download">
-                                <img class="footer-logo" src="~/images/logos/net-core_logo.svg">
+                                <img class="footer-logo w-100 w-sm-40 px-3 px-sm-only-1" src="~/images/logos/net-core_logo.svg" alt=".NET Core" />
+                                <img class="footer-logo w-100 w-sm-40 p-3 p-sm-only-1" src="~/images/logos/csharp-logo.png" alt="C Sharp" />
                             </a>
                         </div>
                     </div>
