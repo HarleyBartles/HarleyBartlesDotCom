@@ -2,79 +2,407 @@
     ViewData["Title"] = "About me";
 }
 
-<div class="row position-md-relative">
+<div class="row position-md-relative mb-3">
     <div class="col-12">
         <img class="w-100" src="~/images/banners/hello-banner.jpg" />
     </div>
     <div class="col-12 position-md-absolute position-center position-md-bottom-right">
         <div class="text-inner p-3 p-md-5 text-md-light">
-            <h2>@ViewData["Title"]</h2>
+            <h2>Hello, my name is Harley</h2>
             <h4>@ViewData["Message"]</h4>
         </div>
-        
+
     </div>
 </div>
 
 <div class="row">
     <div class="col">
-        <h2>Hello there!</h2>
-        <h4>If you're reading this you're probably interested in employing me. <br />
-        To download my CV&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-secondary" href="~/static/HarleyBartlesCV.docx">click here</a></h4>
+        <h2>Hi!</h2>
+        <h4>If you're reading this and you're interested in employing me, get in touch. </h4>
+        <p><a class="btn btn-outline-secondary" href="~/static/HarleyBartlesCV.docx">Download My CV</a></p>
     </div>
 </div>
-<div class="panel-group">
-    <div class="panel panel-default">
-        <h2>Overview</h2>
-    </div>
-    <div id="FRONTEND" class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title wow fadeInUp">Front End Skills</h3></div>
-        <div class="panel-body">
-            <label for="JS">Javascript</label>
-            <div id="JS" class="progress">
-                <div class="progress-bar w-60 wow growBars" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
-            </div>
-            <label for="JQ">JQuery</label>
-            <div id="JQ" class="progress">
-                <div class="progress-bar w-80 wow growBars" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
-            </div>
-            <label for="CSS">CSS</label>
-            <div id="CSS" class="progress">
-                <div class="progress-bar w-80 wow growBars" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
-            </div>
-            <label for="HTML">HTML</label>
-            <div id="HTML" class="progress">
-                <div class="progress-bar w-100 wow growBars" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">5/5</div>
-            </div>
-            <label for="RAZOR">Razor Pages</label>
-            <div id="RAZOR" class="progress">
-                <div class="progress-bar w-60 wow growBars" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
-            </div>
-        </div>
-    </div>
 
-    <div id="BACKEND" class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title wow fadeInUp">Back End Skills</h3></div>
-        <div class="panel-body">
-            <label for="CS">C Sharp</label>
-            <div id="CS" class="progress">
-                <div class="progress-bar w-80 wow growBars" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
-            </div>
-            <label for="VB">Visual Basic</label>
-            <div id="VB" class="progress">
-                <div class="progress-bar w-60 wow growBars" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
-            </div>
-            <label for="PHP">PHP</label>
-            <div id="PHP" class="progress">
-                <div class="progress-bar w-40 wow growBars" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">2/5</div>
-            </div>
-            <label for="DOTNET">ASP .Net Core</label>
-            <div id="DOTNET" class="progress">
-                <div class="progress-bar w-80 wow growBars" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
-            </div>
-            <label for="SQL">SQL Server</label>
-            <div id="SQL" class="progress">
-                <div class="progress-bar w-60 wow growBars" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Profile</h4>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <div class="card wow fadeInUp">
+            <div class="card-body">
+                <p>I'm a talented and versatile software engineer with solid digital project management experience. My attention to detail and passion for elegant solutions to complex problems drive my success. A people person, I have the ability to communicate effectively both internally and client facing.</p>
+                <p>I'm fully versed in Agile methodologies and proficient or better in multiple modern web technologies both front and back end. I'm primarily a .NET Core coder with experience using the Microsoft stack, however I can turn my hand to any coding environment and relish learning opportunities.</p>
+                <p>I'm self motivated with the ability to fly solo and pull in resource as needed, also a team player with the desire to inspire, motivate and learn from those around me.</p>
+                <p>As a project manager, I have a proven track record of mapping critical paths, distilling complex requirements into tangible deliverables and managing teams to deliver projects on time, on budget and to spec.</p>
+                <p class="mb-0">As a coder, this website itself is a demonstration of my skills, the technologies I use and my workflow. <a asp-action="AboutSite">Learn more about this site</a></p>
             </div>
         </div>
+        
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Key Skills</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <ul>
+            <li class="wow fadeInUp">Versed in Agile methodologies</li>
+            <li class="wow fadeInUp delay-0_1s">Extensive front end experience</li>
+            <li class="wow fadeInUp delay-0_2s">HTML5, CSS3, Javascript/Jquery</li>
+            <li class="wow fadeInUp delay-0_3s">Back end experience and passion</li>
+            <li class="wow fadeInUp delay-0_4s">Skilled in .NET MVC using C# or VB</li>
+            <li class="wow fadeInUp delay-0_5s">Proficient or better in multiple other modern programming languages</li>
+            <li class="wow fadeInUp delay-0_6s">Experienced in SQL Server, SSIS/SSRS</li>
+            <li class="wow fadeInUp delay-0_7s">Solid working knowledge of security best practices</li>
+            <li class="wow fadeInUp delay-0_8s">Extensive experience specifying and documenting bespoke development</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Employment Experience</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light">
+        <h5>Brand Addition</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Web Manager</h5>
+                <p>May 2015 - January 2019</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Key in developing and implementing fully bespoke multi-tenant .NET web platform hosting over 100 individual sites</li>
+                    <li>
+                        Migrated more than 50 corporate sites to the new web platform, each including:
+                        <ul>
+                            <li>Full responsive front end site redesign</li>
+                            <li>Integration of varied SSO and Punchout partner APIs</li>
+                            <li>Testing & QA</li>
+                        </ul>
+                    </li>
+                    <li>Took the lead role in specifying and developing platform improvements & new functionalities</li>
+                    <li>Translating complex client requirements into tangible fixed size platform development pieces</li>
+                    <li>Monitoring and analysing site behaviour to identify and resolve bugs on an on-going basis</li>
+                    <li>Daily scrums to keep multiple on-going development projects on track</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Sales Team Manager</h5>
+                <p>January 2014 - April 2015</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Managed a mixed team of 14 sales and administration staff</li>
+                    <li>Delegated and prioritised day to day workloads to ensure team work was completed within timescale KPI's</li>
+                    <li>Identified sales opportunities and key clients to meet and exceed aggressive sales targets of £12m+</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Account Manager</h5>
+                <p>January 2010 - December 2013</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Owned two large blue chip client accounts - Google and Intel</li>
+                    <li>Liaised with key decision makers to create and deliver approved and effective product ranges</li>
+                    <li>Prepared and presented regular QBRs to client stakeholders</li>
+                    <li>Managed stock levels to maximise margins and improve cash flow by identifying top selling products to invest in and implementing aggressive strategies to liquidate aged stock</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Account Executive</h5>
+                <p>March 2008 - December 2010</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Prepared sales quotes and orders for clients and managed through to timely delivery of goods</li>
+                    <li>Negotiated the supply chain regularly to both maximise margin and deliver best value for the client</li>
+                    <li>Responsive to client requirements, offering creative responses to often challenging briefs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>4Imprint</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Order Administrator</h5>
+                <p>July 2006 - February 2008</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Processed a high volume of sales orders called off from locally held product range</li>
+                    <li>Handled invoicing with a variety of methods including card handling and purchase order</li>
+                    <li>Answered a wide range of inbound queries via email and phone as the first point of client contact.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>Various Employers</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Actor</h5>
+                <p>2004 - 2006</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Undertook national and international tours with a variety of theatre companies</li>
+                    <li>Secured memorable roles in major TV shows such as Shameless</li>
+                    <li>Communicated on a creative and technical level with members of the touring team to ensure the best is brought out of each show</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>Astor Security</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Door Supervisor</h5>
+                <p>2002 - 2003</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Responsible for managing entry and providing security services to a busy nightclub</li>
+                    <li>Responded quickly to changing situations in the case of managing conflict.</li>
+                    <li>Listened to and resolved customer complaints</li>
+                    <li>Prepared reports on incidents and accidents</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>Various Employers</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Forklift Operator</h5>
+                <p>2000 - 2002</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Operated both a counterbalance and reach truck in various environments from warehouse to yard work</li>
+                    <li>Picked and palletised orders from an order sheet to a high degree of accuracy</li>
+                    <li>Maintained awareness of health and safety regulations at all times</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Education & Training</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>MANCAT Moston Campus</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>Access to H.E. Certificate</h5>
+                <p>2002-2003</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Media, Theatre & English</li>
+                    <li>Pass grade</li>
+                    <li>Equivalent to 3 A levels</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>Shena Simon Sixth Form College</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>BTEC National Diploma</h5>
+                <p>1997-1999</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Performing Arts (Music)</li>
+                    <li>Merit Grade</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 bg-secondary text-sm-center mb-3 wow slideInLeft text-light ">
+        <h5>Spurley Hey High School</h5>
+    </div>
+    <div class="col-sm-9">
+        <div class="card mb-3 wow slideInUp">
+            <div class="card-header">
+                <h5>GCSE Education</h5>
+                <p>1992 - 1995</p>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>7 GCSEs at grade A-D</li>
+                    <li>Including Maths, Science & English at grade C or higher</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Professional Memberships</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>Member of British Mensa</p>
+    </div>
+</div>
+
+
+<div class="row mb-3">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Rating Myself</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>I'm my own worst critic, if I had to I'd probably call myself a mid-weight developer. I have strengths and areas for improvement, but don't we all? I'm not an expert in all areas, but I do have a desperate insatiable desire to become one. I'll let Mr Ali sum up my approach to my work:</p>
+
+        <blockquote class="px-3 bg-light">
+            <p>I would have been the world’s greatest at whatever I did. If I were a garbage man, I’d be the world’s greatest garbage man! I’d pick up more garbage and faster than anyone has ever seen. To tell you the truth, I would have been the greatest at whatever I’d done!</p>
+            <cite>Muhammad Ali</cite>
+        </blockquote>
+
+        <p>Here are some extremely rough ratings I've assigned to myself.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3 mb-md-0 wow slideInUp">
+            <div class="card-header">
+                <h4 class="card-title wow slideInRight delay-0_5s">Front End</h4>
+            </div>
+            <div class="card-body">
+                <label for="JS">Javascript</label>
+                <div id="JS" class="progress">
+                    <div class="progress-bar w-60 wow growBars delay-0_5s" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
+                </div>
+                <label for="JQ">JQuery</label>
+                <div id="JQ" class="progress">
+                    <div class="progress-bar w-80 wow growBars delay-0_5s" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
+                </div>
+                <label for="CSS">CSS</label>
+                <div id="CSS" class="progress">
+                    <div class="progress-bar w-80 wow growBars delay-0_5s" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
+                </div>
+                <label for="HTML">HTML</label>
+                <div id="HTML" class="progress">
+                    <div class="progress-bar w-100 wow growBars delay-0_5s" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">5/5</div>
+                </div>
+                <label for="RAZOR">Razor Pages</label>
+                <div id="RAZOR" class="progress">
+                    <div class="progress-bar w-60 wow growBars delay-0_5s" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card wow slideInUp delay-0_25s">
+            <div class="card-header">
+                <h4 class="card-title wow slideInRight delay-0_5s">Back End</h4>
+            </div>
+            <div class="card-body">
+                <label for="CS">C Sharp</label>
+                <div id="CS" class="progress">
+                    <div class="progress-bar w-80 wow growBars delay-0_5s" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
+                </div>
+                <label for="VB">Visual Basic</label>
+                <div id="VB" class="progress">
+                    <div class="progress-bar w-60 wow growBars delay-0_5s" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
+                </div>
+                <label for="PHP">PHP</label>
+                <div id="PHP" class="progress">
+                    <div class="progress-bar w-40 wow growBars delay-0_5s" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">2/5</div>
+                </div>
+                <label for="DOTNET">ASP .Net Core</label>
+                <div id="DOTNET" class="progress">
+                    <div class="progress-bar w-80 wow growBars delay-0_5s" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">4/5</div>
+                </div>
+                <label for="SQL">SQL Server</label>
+                <div id="SQL" class="progress">
+                    <div class="progress-bar w-60 wow growBars delay-0_5s" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">3/5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 bg-dark text-light">
+        <h4 class="wow slideInRight">Where now?</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-outline-secondary" asp-action="AboutSite">More about this site</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-outline-secondary" asp-action="Contact">Contact me</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-outline-secondary" href="~/static/HarleyBartlesCV.docx">Download my CV</a>
     </div>
 </div>

@@ -17,7 +17,7 @@ namespace HBDotCom.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Everything you never wanted to know.";
+            ViewData["Message"] = "What would you like to know?";
 
             return View();
         }
