@@ -1,6 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <environment include="Production">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9630945-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-9630945-2');
+        </script>
+    </environment>
+    <environment include="Staging">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9630945-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-9630945-3');
+        </script>
+    </environment>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="HzUPNCfCxEkGl1fBxp2E26-qCi7gGAG5fwKI6exH4xs" />
