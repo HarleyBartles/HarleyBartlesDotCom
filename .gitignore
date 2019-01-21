@@ -10,7 +10,7 @@
 *.Development.*
 MyHowTo.txt
 secrets.env
-appsettings.Development.json
+*appsettings.Development.json
 */.gitignore
 rebuild
 rebuild.*
