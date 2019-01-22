@@ -72,5 +72,7 @@ namespace HBDotCom.Data
                 b.Property(t => t.Name).HasMaxLength(128);
             });
         }
+
+        public DbSet<HBDotCom.Areas.Identity.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }
