@@ -8,7 +8,6 @@
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
-
             gtag('config', 'UA-9630945-2');
         </script>
     </environment>
@@ -18,7 +17,6 @@
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
-
             gtag('config', 'UA-9630945-3');
         </script>
     </environment>
@@ -32,6 +30,7 @@
         <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap-reboot.css" />
         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="~/lib/animate.css/animate.css" />
+        <link rel="stylesheet" href="~/lib/toastr.js/toastr.css" />
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
         <link rel="stylesheet" href="~/css/bootstrap-helper.css" casp-append-version=true />
         <link rel="stylesheet" href="~/css/site.css" casp-append-version=true />
@@ -61,6 +60,9 @@
               asp-fallback-test-value="both"
               integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI="
               crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="~/lib/toastr.js/toastr.css" />
+
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald" rel="stylesheet">
         <link rel="stylesheet" href="~/css/bootstrap-helper.css" asp-append-version=true />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -150,6 +152,8 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.js"></script>
         <script src="~/lib/wow/wow.js"></script>
+        <script src="~/lib/clipboard.js/clipboard.js"></script>
+        <script src="~/lib/toastr.js/toastr.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
@@ -169,6 +173,12 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.wow"
                 crossorigin="anonymous"
                 integrity="sha256-z6FznuNG1jo9PP3/jBjL6P3tvLMtSwiVAowZPOgo56U="></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"
+                asp-fallback-src="~/lib/clipboard.js/clipboard.min.js"
+                asp-fallback-test="window.jQuery.fn.ClipboardJS"></script>
+        
+        <script src="~/lib/toastr.js/toastr.min.js"></script>
+        
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 
