@@ -28,7 +28,6 @@
         var key = e.which;
         if (key === 13)  // the enter key code
         {
-            alert($(this).next('.btn').html());
             $(this).next('.btn').click();
             return false;
         }
