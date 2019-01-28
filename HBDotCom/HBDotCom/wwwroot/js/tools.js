@@ -1,13 +1,4 @@
 ﻿$(function () {
-    $('#TwitterName').keypress(function (e) {
-        var key = e.which;
-        if (key === 13)  // the enter key code
-        {
-            $('#MakeLink').click();
-            return false;
-        }
-    });
-
     $('#MakeLink').on('click', function () {
         var name = $('#TwitterName').val();
         if (name.length > 0) {
