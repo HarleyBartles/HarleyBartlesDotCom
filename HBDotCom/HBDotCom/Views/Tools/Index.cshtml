@@ -9,13 +9,17 @@
 <div class="row">
     <div class="col-12 col-md">
         <label for="TwitterName">Twitter Handle</label>
-        <input id="TwitterName" type="text"  class="form-control" />
+        <input id="TwitterName" type="text" class="form-control mb-3" />
         <button id="MakeLink" class="btn btn-outline-secondary mx-auto">Go</button>
     </div>
     <div class="col-12 col-md invisible">
         <label for="SearchLink">Your search link</label>
-        <input id="SearchLink" class="form-control" type="text" />
+        <input id="SearchLink" type="text" class="form-control mb-3" />
         <button id="CopyLink" data-clipboard-target="#SearchLink" class="btn btn-outline-secondary mx-auto">Copy</button>
     </div>
 </div>
 <hr />
+
+@section Scripts {
+    <script src="~/js/tools.js"></script>
+}
