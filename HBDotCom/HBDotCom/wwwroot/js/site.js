@@ -23,5 +23,15 @@
         toastr.warning("Unable to copy automatically. Press CTRL+C to copy");
     });
 
+    // Binds enter keypress to the click function of the next button in the DOM
+    $('input').keypress(function (e) {
+        var key = e.which;
+        if (key === 13)  // the enter key code
+        {
+            alert($(this).next('.btn').html());
+            $(this).next('.btn').click();
+            return false;
+        }
+    });
     
 });
