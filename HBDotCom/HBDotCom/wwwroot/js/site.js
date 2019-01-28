@@ -41,7 +41,7 @@
         }).done(function (data) {
             var output = $('#SearchLink');
             $(output).val(data);
-            $('.col.invisible').removeClass('invisible');
+            $('.col-12.invisible').removeClass('invisible');
         });
     };
 
