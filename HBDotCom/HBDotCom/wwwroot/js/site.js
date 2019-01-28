@@ -24,7 +24,7 @@
     });
 
     // Binds enter keypress to the click function of the next button in the DOM
-    $('input').keypress(function (e) {
+    $('input[type="text"]').keypress(function (e) {
         var key = e.which;
         if (key === 13)  // the enter key code
         {
