@@ -16,7 +16,7 @@ namespace HBDotCom.Controllers
         public string MakeSearchLink(string userName)
         {
             userName = userName.Replace("@", "");
-            return "https://twitter.com/search?from:" + userName + "%20-filter:replies";
+            return "https://twitter.com/search?q=from:" + userName + "%20-filter:replies";
         }
     }
 }
