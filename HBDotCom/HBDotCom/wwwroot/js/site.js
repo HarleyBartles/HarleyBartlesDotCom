@@ -2,6 +2,7 @@
     new WOW().init();
 
     var clipboard = new ClipboardJS('.btn');
+    var ga = new ga();
 
     toastr.options = {
         "timeOut": 3000,
@@ -15,6 +16,7 @@
         console.info('Trigger:', e.trigger);
         toastr.info("Copied");
         e.clearSelection();
+        ga('send', 'event', 'link copied', 'click'); 
     });
 
     clipboard.on('error', function (e) {
