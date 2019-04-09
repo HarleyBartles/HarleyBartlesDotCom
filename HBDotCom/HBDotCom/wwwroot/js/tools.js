@@ -2,7 +2,7 @@
     $('#MakeLink').on('click', function () {
         var name = $('#TwitterName').val();
         if (name.length > 0) {
-            makeLink(name);
+            makeLink(name.trim());
         } else {
             toastr.warning("Please type a username");
         }
