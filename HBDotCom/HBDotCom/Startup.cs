@@ -1,5 +1,7 @@
 ﻿using HBDotCom.Areas.Identity.Models;
 using HBDotCom.Data;
+using HBDotCom.Models;
+using HBDotCom.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
 using System;
 using System.Threading;
+using Tweetinvi;
+using Tweetinvi.AspNet;
+using Tweetinvi.Core.Public.Models.Authentication;
 
 namespace HBDotCom
 {
@@ -19,9 +24,10 @@ namespace HBDotCom
     {
         private readonly string _connectionString;
 
+        public static WebhookConfiguration WebhookConfiguration { get; set; }
+
         public IConfiguration Configuration { get; }
         public IConfiguration BuilderConfig { get; }
-        private readonly IHostingEnvironment _env;
 
         public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
@@ -41,8 +47,6 @@ namespace HBDotCom
             {
                 _connectionString = $@"Server={BuilderConfig["MYSQL_SERVER_NAME"]};Database={BuilderConfig["MYSQL_DATABASE"]};Uid={BuilderConfig["MYSQL_USER"]};Pwd={BuilderConfig["MYSQL_PASSWORD"]}";
             }
-
-            _env = env;
         }
         
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -98,9 +102,25 @@ namespace HBDotCom
                 facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
-            
 
 
+            EmailServerConfiguration config = new EmailServerConfiguration
+            {
+                SmtpPassword = "Password",
+                SmtpServer = "smtp.someserver.com",
+                SmtpUsername = "awesomeemail@nickolasfisher.com"
+            };
+
+            EmailAddress FromEmailAddress = new EmailAddress
+            {
+                Address = "myemailaddress@somesite.com",
+                Name = "Nick Fisher"
+            };
+
+
+            services.AddSingleton<EmailServerConfiguration>(config);
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddSingleton<EmailAddress>(FromEmailAddress);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -134,6 +154,21 @@ namespace HBDotCom
             app.UseAuthentication();
 
             //app.UseHttpsRedirection();
+
+            Plugins.Add<WebhooksPlugin>();
+
+            var consumerToken = Configuration["Authentication:Twitter:ConsumerKey"];
+            var consumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+            var accessToken = Configuration["Authentication:Twitter:AccessToken"];
+            var accessTokenSecret = Configuration["Authentication:Twitter:AccessTokenSecret"];
+            var appCreds = Auth.SetApplicationOnlyCredentials(consumerToken, consumerSecret, true);
+
+            WebhookConfiguration = new WebhookConfiguration(new ConsumerOnlyCredentials(consumerToken, consumerSecret)
+            {
+                ApplicationOnlyBearerToken = appCreds.ApplicationOnlyBearerToken
+            });
+
+            app.UseTweetinviWebhooks(WebhookConfiguration);
 
             app.UseMvc(routes =>
             {

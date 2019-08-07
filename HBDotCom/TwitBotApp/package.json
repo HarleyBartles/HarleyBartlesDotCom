@@ -1,0 +1,9 @@
+{
+  "name": "twit-bot-app",
+  "version": "0.0.0",
+  "description": "TwitBotApp",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}

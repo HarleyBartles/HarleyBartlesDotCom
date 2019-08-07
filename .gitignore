@@ -268,3 +268,5 @@ paket-files/
 __pycache__/
 *.pyc
 /HBDotCom/HBDotCom/.gitignore/env
+/HBDotCom/HBDotCom/.gitignore/Contact bak.cshtml
+/HBDotCom/TwitBotApp/config.js

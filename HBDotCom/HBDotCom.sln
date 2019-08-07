@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBDotCom", "HBDotCom\HBDotCom.csproj", "{F53A68FE-8A2F-4C14-931A-AC57B8397837}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBDotCom.Tests", "HBDotCom.Tests\HBDotCom.Tests.csproj", "{986B46D8-B57E-488A-904E-2E10CA1D6EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBDotCom.Tests", "HBDotCom.Tests\HBDotCom.Tests.csproj", "{986B46D8-B57E-488A-904E-2E10CA1D6EEE}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "TwitBotApp", "TwitBotApp\TwitBotApp.njsproj", "{A5050D92-7539-4330-B448-07FDE128FCDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{986B46D8-B57E-488A-904E-2E10CA1D6EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{986B46D8-B57E-488A-904E-2E10CA1D6EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{986B46D8-B57E-488A-904E-2E10CA1D6EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5050D92-7539-4330-B448-07FDE128FCDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5050D92-7539-4330-B448-07FDE128FCDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5050D92-7539-4330-B448-07FDE128FCDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5050D92-7539-4330-B448-07FDE128FCDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
