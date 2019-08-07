@@ -13,18 +13,18 @@
         <form asp-action="Contact" asp-controller="Home" method="post">
             <div class="row">
                 <div class="col-3">
-                    <label asp-for="Name">Your name:</label>
+                    <label asp-for="@Model.Name">Your name:</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" asp-for="Name" />
+                    <input type="text" asp-for="@Model.Name" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-3">
-                    <label asp-for="Email">Your email:</label>
+                    <label asp-for="@Model.Email">Your email:</label>
                 </div>
                 <div class="col-9">
-                    <input type="text" asp-for="Email" />
+                    <input type="text" asp-for="@Model.Email" />
                 </div>
             </div>
             <div class="row">
